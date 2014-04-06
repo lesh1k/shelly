@@ -1,0 +1,12 @@
+- Exisiting solutions,which are these, if there are any, why is SIUNL better, if it is.
+- What are aliases and why certain aliases were chosen.
+- Analysis of the problem, milestone setting. How the idea was developed.
+  What lead to the implementation of specific commands, how were these selected.
+- Option to show how the actual command looks like. (e.g. typing "mount MyISO -e" with the option -e [explicit]
+  would mount the CD and also print the actual command that was executed "mount -o loop MyISO /media/iso")
+- Permissions management.
+- Auto-complete.
+- Solving the conflicts of added aliases
+- ? possibility to use system command vs my implementation and using both
+- Benefits from using/installing SIUNL
+- Working with multiple OSes and diff. package managers.
