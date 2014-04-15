@@ -1,0 +1,7 @@
+The basic idea is determine what are the commands that are most widely used, then determine which of these seem longer to type or difficult to remember, and finally create aliases for these and auto-complete if necessary.
+
+Creating an alias is not a big deal in bash, one simply appends at the end of ~/.bashrc any alias he likes (even the ones that overwrite some of the existing, what can be used to confuse the user). The alias is added in the following way: 
+    alias alias_name = "what_should_it_do"
+    e.g. alias pretty_list = "tree"
+
+There is however a better way of doing the above mentioned operations. Aliases can be added to a separate file and will not mess with default .bashrc contents. Aliases from this separate file are added in case there exists a file ~/.bash_aliases (by default) or any other file, the path to which we set in the config as follows:

@@ -1,0 +1,924 @@
+    1  sduo ap-get update
+    2  sudo apt-get update 
+    3  sudo apt-get upgrade 
+    4  sudo apt-get dist-upgrade 
+    5  sudo shutdown -r now
+    6  sudo apt-add-repository ppa:versable/elementary-update
+    7  sudo apt-get update 
+    8  sudo apt-get upgrade 
+    9  sudo apt-get install elementary-tweaks
+   10  sudo apt-get install thunar
+   11  sudo apt-get remove thunar
+   12  sudo apt-get purge thunar
+   13  sudo apt-get autoremove
+   14  sudo add-apt-repository ppa:marlin-devs/marlin-daily
+   15  sudo apt-get update 
+   16  sudo apt-get install marlin
+   17  sudo add-apt-repository ppa:bumblebee/stable
+   18  sudo apt-get update
+   19  sudo apt-get install bumblebee bumblebee-nvidia primus linux-headers-generic
+   20  sudo apt-get install pavucontrol 
+   21  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+   22  sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+   23  sudo apt-get update 
+   24  sudo apt-get install google-chrome-stable 
+   25  sudo add-apt-repository "deb http://archive.canonical.com/ precise partner"
+   26  sudo apt-get update 
+   27  sudo apt-get install skype 
+   28  sudo add-apt-repository ppa:ubuntu-wine/ppa
+   29  sudo apt-get update
+   30  sudo apt-get install wine1.7
+   31  sudo add-apt-repository ppa:me-davidsansome/clementine
+   32  sudo apt-get update 
+   33  sudo apt-get install clementine 
+   34  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E0F72778C4676186
+   35  sudo wget http://deb.playonlinux.com/playonlinux_saucy.list -O /etc/apt/sources.list.d/playonlinux.list
+   36  sudo apt-get update 
+   37  sudo apt-get install playonlinux 
+   38  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+   39  sudo apt-get update 
+   40  sudo apt-get install sublime-text-installer
+   41  sudo apt-get install meld 
+   42  sudo apt-get install git
+   43  sudo apt-get install gparted 
+   44  sudo add-apt-repository ppa:libreoffice/ppa
+   45  sudo apt-get update 
+   46  sudo apt-get install libreoffice
+   47  sudo apt-get install ncdu
+   48  sudo apt-get install python-pip
+   49  sudo pip install beautifulsoup4
+   50  sudo apt-get install htop 
+   51  sudo add-apt-repository ppa:otto-kesselgulasch/gimp-edge
+   52  sudo apt-get update 
+   53  sudo apt-get install gimp
+   54  sudo add-apt-repository ppa:djcj/vlc-stable
+   55  sudo apt-get update 
+   56  sudo apt-get install vlc
+   57  sudo add-apt-repository ppa:hydr0g3n/qbittorrent-stable
+   58  sudo apt-get update 
+   59  sudo apt-get install qbittorrent
+   60  sudo apt-get install screencloud
+   61  sudo add-apt-repository ppa:n-muench/programs-ppa
+   62  sudo apt-get update 
+   63  sudo apt-get install filezilla
+   64  sudo apt-get install dkms
+   65  wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+   66  sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian precise contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+   67  sudo apt-get update 
+   68  sudo apt-get install virtualbox
+   69  sudo apt-get purge virtualbox
+   70  sudo apt-get autoremove 
+   71  sudo apt-get install virtualbox-4.3 
+   72  sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+   73  sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ $(lsb_release -cs) main" >> /etc/apt/sources.list.d/dropbox.list'
+   74  sudo apt-get update 
+   75  sudo apt-get install marlin-plugin-dropbox 
+   76  gksudo marlin
+   77  sudo gtk-update-icon-cache /usr/share/icons/elementary/
+   78  sudo apt-get install marlin marlin-plugin-dropbox
+   79  sudo apt-get install libqt4-svg
+   80  sudo apt-get update
+   81  sudo apt-get install apache2
+   82  sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+   83  sudo mysql_install_db
+   84  sudo /usr/bin/mysql_secure_installation
+   85  sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+   86  sudo nano /etc/apache2/mods-enabled/dir.conf
+   87  sudo apt-get install php5-mysql
+   88  sudo apt-get install php5-curl
+   89  sudo nano /var/www/info.php
+   90  sudo service apache2 restart
+   91  gksu scratch-text-editor /etc/apache2/sites-enabled/000-default
+   92  sudo service apache2 restart 
+   93  cd projects/
+   94  mkdir ppf
+   95  cd ppf
+   96  git init
+   97  git config --global user.name "Alexei Dvorac"
+   98  git config --global user.email lexhxas@gmail.com
+   99  git config --global merge.tool meld
+  100  git remote add origin https://lexxxas@bitbucket.org/juk220/ppf.git
+  101  git fetch --all
+  102  git pull --all
+  103  git branch
+  104  git checkout lexxxas
+  105  git checkout master
+  106  git pull origin master
+  107  git update-index --assume-unchanged application/config/config.php 
+  108  git update-index --assume-unchanged .htaccess 
+  109  sudo /etc/init.d/apache2 restart
+  110  gksu scratch-text-editor /etc/apache2/sites-enabled/000-default
+  111  git status
+  112  sudo service apache2 restart 
+  113  sudo a2enmod rewrite
+  114  sudo service apache2 restart 
+  115  git config --global color.ui true
+  116  cd projects/ppf/
+  117  git status
+  118  git pull origin master
+  119  git branch --list
+  120  git checkout trywysiwig2
+  121  git checkout -b trywysiwig2
+  122  sudo chmod 777 public/libraries/bootstrap-wysihtml5/*
+  123  sudo chmod -R 644 public/libraries/bootstrap-wysihtml5/*
+  124  sudo service apache2 restart 
+  125  sudo chmod -R 777 public/libraries/
+  126  git status
+  127  git add *
+  128  git status
+  129  git commit -am "Ressembling to required version, wysiwyg editor set up"
+  130  git status
+  131  git add *
+  132  git commit -am "Added local jQuery 2.1.0. WYSIWYG functioning except insert image/link"
+  133  git checkout master 
+  134  git pull origin master
+  135  git branch --list
+  136  git merge trywysiwig2 
+  137  git push origin master
+  138  git checkout lexxxas 
+  139  git merge master 
+  140  git status
+  141  git checkout master 
+  142  git pull origin master
+  143  git checkout lexxxas 
+  144  git push origin lexxxas
+  145  git status
+  146  git status 
+  147  git commit -am "cleaned up wysihtml folder"
+  148  git commit -am "set min-width 440px for body"
+  149  git commit -am "Acceptable resize behavior for Save changes"
+  150  git commit -am "Images and links can now be inserted in step-3. Looks horrible"
+  151  git commit -am "Solved the problem of *wysiwyg-color.css* not being found. Added font-color selection in editor"
+  152  git status
+  153  git push origin lexxxas
+  154  git checkout master 
+  155  git pull origin master
+  156  git merge lexxxas
+  157  git push origin master
+  158  sudo apt-get update 
+  159  sudo apt-get upgrade 
+  160  sudo apt-get dist-upgrade 
+  161  primusrun wine "C:\Program Files (x86)\Photoshop\Photoshop.exe"
+  162  primusrun wine "C:\Program Files (x86)\Photoshop\x64\Photoshop.exe"
+  163  python Dropbox/projects/BeatportVerifier/v\ 1/BP_top100_v_1.1.0
+  164  python Dropbox/projects/BeatportVerifier/v\ 1/BP_top100_v_1.1.0.py
+  165  ssh root@162.243.149.111
+  166  sudo apt-get install terminator
+  167  sudo chown leshik /media/efe5526d-4b15-4512-992d-22907ec8ec43/
+  168  killall chrome
+  169  primusrun wine /media/LexXxaS/Games/Playstation\ \(pSX_1_13\)/psxfin.exe 
+  170  sudo fdisk -l
+  171  sudo blkid
+  172  sudo chgrp adm /media/74c4eff4-0caf-4a4d-b9a9-469397cdc309/
+  173  sudo chmod g+w /media/74c4eff4-0caf-4a4d-b9a9-469397cdc309/
+  174  cd /media/efe5526d-4b15-4512-992d-22907ec8ec43/
+  175  ls
+  176  sudo rmdir lost+found/
+  177  cd ../74c4eff4-0caf-4a4d-b9a9-469397cdc309/
+  178  sudo rmdir lost+found/
+  179  killall chrome
+  180  htop
+  181  sudo unmount /dev/sda1 
+  182  sudo unmount /dev/sda4
+  183  sudo umount /dev/sda4
+  184  fuser(1)
+  185  fuser(leshik)
+  186  fuser
+  187  fuser -l
+  188  sudo umount /dev/sda4
+  189  lsof
+  190  sudo blkid
+  191  sudo scratch-text-editor /etc/fstab
+  192  xdpyinfo
+  193  cd projects/ppf/
+  194  git status
+  195  git pull origin master
+  196  git checkout lexxxas 
+  197  git merge master 
+  198  git commit -am "Acceptable layout for the modal"
+  199  git commit -am "more wysiwyg improvements"
+  200  git commit -am "modal in acceptable state"
+  201  git checkout master
+  202  git merge lexxxas 
+  203  git push origin master
+  204  git checkout lexxxas 
+  205  git push origin lexxxas
+  206  git status
+  207  cd /etc/apache2/sites-enabled/
+  208  ls
+  209  sudo scratch-text-editor 000-default 
+  210  apt-cache search php5
+  211  ssh root@95.85.57.135 -L 5901/127.0.0.1/5901
+  212  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  213  sudo apt-get install tightvnc
+  214  scp juk@95.85.57.138/home/Pictures/screenshot1.png ~/Downloads
+  215  scp juk@95.85.57.138:/home/juk/Pictures/screenshot1.png ~/Downloads
+  216  scp juk@95.85.57.135:/home/juk/Pictures/screenshot1.png ~/Downloads
+  217  scp juk@95.85.57.135:/home/juk/Pictures/snapshot1.png ~/Downloads
+  218  ssh root@162.243.149.111
+  219  scp -r Downloads root@162.243.149.111:~/apps/vkstalk/vkstalk/Data
+  220  scp -r root@162.243.149.111:~/apps/vkstalk/vkstalk/Data Downloads/
+  221  ssh root@162.243.149.111
+  222  ssh root@95.85.27.211
+  223  scp -r Downloads/ root@95.85.27.211:~/apps/vkstalk
+  224  ssh root@95.85.27.211
+  225  ping 95.85.57.135
+  226  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  227  sudo service apache2 restart 
+  228  sudo chgrp www-data /media/leData/Docs/apps/web/
+  229  chmod g+x /media/leData/Docs/apps/web/
+  230  sudo chmod g+x /media/leData/Docs/apps/web/
+  231  sudo chmod -R g+x /media/leData/Docs/apps/web/
+  232  sudo chgrp -R www-data /media/leData/Docs/apps/web/
+  233  sudo chmod -R 777a /media/leData/Docs/apps/
+  234  sudo chmod -R 777 /media/leData/Docs/apps/
+  235  sudo service apache2 restart 
+  236  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  237  sudo chmod -R 777 /media/leData/Docs/apps/*
+  238  sudo chmod -R 777 /media/leData/Docs/apps
+  239  sudo chown -R www-data:www-data /media/leData/Docs/apps/web
+  240  sudo adduser leshik www-data
+  241  sudo chmod -R 775 /media/leData/Docs/apps/web
+  242  sudo service apache2 restart 
+  243  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  244  sudo service apache2 restart 
+  245  sudo chmod a+rwx /media/leData/Docs/apps/web/
+  246  sudo chmod -R a+rwx /media/leData/Docs/apps/web/
+  247  sudo chmod -R a+rwx /media/leData/Docs/apps/web/*
+  248  sudo service apache2 restart 
+  249  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  250  cd /media/leData/Docs/
+  251  ls- l apps/
+  252  ls -l apps/
+  253  sudo chown -R www-data:www-data apps/web/
+  254  sudo service apache2 restart 
+  255  sudo chown -R www-data:nobody apps/web/
+  256  sudo chown -R nobody apps/web/
+  257  sudo service apache2 restart 
+  258  sudo chmod 755 -R apps/web/
+  259  sudo chmod 755 -R apps/web/*
+  260  sudo chmod 755 -R apps/web
+  261  sudo service apache2 restart 
+  262  sudo chmod ar+x -R apps/web
+  263  sudo chmod a+rx apps/web
+  264  sudo service apache2 restart 
+  265  ls -l
+  266  ls -l apps/
+  267  sudo adduser apache www-data
+  268  ps aux | egrep '(apache|httpd)'
+  269  ls -l apps/
+  270  sudo chown www-data apps/web/
+  271  sudo chown -R www-data apps/web/
+  272  ls -l apps/
+  273  sudo chmod g+rwx -R apps/
+  274  ls -l apps/
+  275  sudo chmod a+rwx -R apps/
+  276  ls -l apps/
+  277  sudo service apache2 restart 
+  278  sudo scratch-text-editor /etc/fstab
+  279  htop
+  280  sudo gala --replace
+  281  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  282  sudo service apache2 restart 
+  283  ls -l /mnt/leData/
+  284  ls -l /mnt/
+  285  ls -l /mnt/leData/Docs/
+  286  sudo chmod a+r -R /mnt/leData/
+  287  ls -l /mnt/leData/Docs/
+  288  sudo chown www-data /mnt/leData/Docs/apps/web/info.php 
+  289  sudo chmod a+rwx /mnt/leData/Docs/apps/web/info.php 
+  290  sudo service apache2 restart 
+  291  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  292  ls /var/www/
+  293  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default 
+  294  sudo nano /etc/apache2/sites-enabled/000-default 
+  295  sudo apt-get update 
+  296  sudo apt-get upgrade 
+  297  sudo apt-get dist-upgrade 
+  298  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  299  exit
+  300  cd !
+  301  cd ~
+  302  python
+  303  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  304  python
+  305  ln -s /mnt/leData/Docs/UTM/ ~/utm
+  306  ls
+  307  cd utm/Semester\ VII/RC/Labs/
+  308  ls
+  309  cd 2
+  310  python calc.py 
+  311  python
+  312  python calc.py 
+  313  cd /mnt/leData/leshik/apps/vk
+  314  cd /mnt/leData/leshik/apps/vkstalk/
+  315  git init
+  316  git remote add origin https://lexxxas@bitbucket.org/lexxxas/vkstalk.git
+  317  git pull origin master
+  318  ls
+  319  touch .gitignore
+  320  nano .gitignore 
+  321  git status
+  322  ps aux | egrep '(wuala)'
+  323  ps aux | egrep '(apache|httpd)'
+  324  ps aux | egrep '(wuala)'
+  325  sudo chown leshik /mnt/
+  326  sudo chmod o+rwx -R /mnt/leData/
+  327  htop
+  328  sudo chmod a+rwx -R /mnt/leData/
+  329  sudo chmod a-x -R /mnt/leData/
+  330  sudo chmod a+rwx -R /mnt/leData/
+  331  sudo service apache2 restart 
+  332  htop
+  333  ht
+  334  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  335  ssh root@95.85.27.211
+  336  sudo add-apt-repository ppa:kilian/f.lux
+  337  sudo apt-get update 
+  338  sudo apt-get install fluxgui
+  339  sudo scratch-text-editor /etc/apache2/sites-enabled/000-default
+  340  htop
+  341  killall qbittorrent 
+  342  htop
+  343  sudo gala --replace &
+  345  sI
+  346  clear
+  347  ga
+  348  /Lab/Lab/Laba/Docs/UTM/Semester VII/RC/Labs/2$ /Lab/Lab/Lab
+  349  eţea Fast
+  350  sudo add-apt-repository ppa:abiword-stable/ppa
+  351  sudo apt-get update
+  352  sudo apt-get install abiword
+  353  cd utm/Semester\ VII/RC/Labs/2/
+  354  python calc.py 
+  355  scp /home/leshik/Downloads/banding-settings.png juk@95.85.57.135:/home/juk/Downloads
+  356  exit
+  357  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  358  exit
+  359  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  360  exit
+  361  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  362  cd utm/Semester\ VII/IPP/
+  363  ls
+  364  cd Labs
+  365  mkdir Labs
+  366  cd Labs/
+  367  git init
+  368  git remote add origin https://github.com/lexxxas/IPP-Labs.git
+  369  git pull origin master
+  370  ls
+  371  cd 3
+  372  ls
+  373  cd ../2
+  374  ls
+  375  cd pizza_app/
+  376  ls
+  377  bash app.sh 
+  378  cd ..
+  379  sudo chmod -R 777 2
+  380  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  381  cd 2
+  382  bash app/
+  383  ls
+  384  cd pizza_app/
+  385  ls
+  386  bash app.sh 
+  387  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  388  htop
+  389  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  390  exi
+  391  exit
+  392  ls
+  393  ln -s /mnt/leData/leshik/ leshik
+  394  ls
+  395  cd leshik/apps/
+  396  cd vkstalk/
+  397  git status
+  398  git init
+  399  git remote add origin https://lexxxas@bitbucket.org/lexxxas/vkstalk.git
+  400  git pull origin master
+  401  git status
+  402  python main.py 
+  405  git status
+  406  git update-index --assume-unchanged logger.pyc
+  407  git update-index --assume-unchanged vkstalk.pyc
+  408  git status
+  409  ls -a
+  410  touch .gitignore
+  411  git status
+  412  git update-index --assume-unchanged .gitignore
+  413  git status
+  414  git commit -am "Got rid of repeated nr of photos chnages."
+  415  git push origin master
+  416  cd leshik/apps/beatportVerifier/v\ 1/
+  417  rm BP_top100_v_1.1.0\ \(Alexei\ Dvorac\'s\ conflicted\ copy\ 2014-01-24\).py 
+  418  python BP_top100_v_1.1.0.py 
+  419  python
+  420  ssh root@95.85.27.211
+  421  exit
+  422  htop
+  423  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  424  killall gala
+  425  htop 
+  426  gala --replace
+  427  gala
+  428  find gala
+  429  find test
+  430  find Skype
+  431  find -R Skype
+  432  info
+  433  clear
+  434  htop
+  435  cd ~
+  436  sudo apt-get update
+  437  sudo apt-get upgrade 
+  438  sudo apt-get install phpmyadmin 
+  439  sudo nano /etc/apache2/apache2.conf
+  440  sudo service apache2 restart 
+  441  sudo nano /etc/phpmyadmin/apache.conf
+  442  sudo nano /usr/share/phpmyadmin/.htaccess
+  443  sudo htpasswd -c /path/to/passwords/.htpasswd leshik
+  444  sudo htpasswd -c /user/share/.htpasswd leshik
+  445  sudo htpasswd -c /usr/share/phpmyadmin/.htpasswd leshik
+  446  sudo service apache2 restart 
+  447  sudo apt-get dist-upgrade 
+  448  ls -a /usr/share/phpmyadmin/
+  449  sudoedit /usr/share/phpmyadmin/.htaccess 
+  450  sudo nano /usr/share/phpmyadmin/.htaccess 
+  451  sudo service apache2 restart 
+  452  mysqladmin -u root password “basicroot”
+  453  mysqladmin -u root -h "localhost" password “basicroot”
+  454  mysqladmin -u root -h host_name password “basicroot”
+  455  sudo nano /etc/apache2/conf.d/phpmyadmin.conf
+  456  sudo nano /etc/phpmyadmin/config.inc.php
+  457  sudo service apache2 restart 
+  458  mysqladmin -u root password basicroot
+  459  sudo mysqladmin -u root password basicroot
+  460  mysqladmin -u root -h localhost password basicroot
+  461  sudo /etc/init.d/mysql restart
+  462  mysql
+  463  mysql -u root -p
+  464  mysql
+  465  mysql --user=root mysql
+  466  mysqld_safe --skip-grant-tables
+  467  sudo mysqld_safe --skip-grant-tables
+  468  mysql --user=root mysql
+  469  killall mysql
+  470  sudo mysqld_safe --skip-grant-tables
+  471  killall mysqld 
+  472  sudo killall mysqld 
+  473  killall mysql
+  474  sudo killall mysql
+  475  sudo mysqld_safe --skip-grant-tables
+  476  sudo killall mysql
+  477  sudo killall mysqld
+  478  sudo killall mysqld_safe
+  479  sudo mysqld_safe --skip-grant-tables
+  480  sudo mysql --user=root mysql
+  481  sudo mysql --user=mysql
+  482  sudo mysql --user=mysql mysql
+  483  sudo mysql --user=mysql
+  484  mysql --version
+  485  exit
+  486  cd leshik/apps/
+  487  sudo chmod -R 777 web/
+  488  xit
+  489  exit
+  490  ssh root@95.85.27.211
+  491  exit
+  492  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  493  exi
+  494  1t
+  495  exit
+  496  cd leshik/apps/web/new_uiut/
+  497  git init
+  498  git status
+  499  git add *
+  500  git commit -am "Project started. Part of the main skeleton built"
+  501  https://lexxxas@bitbucket.org/lexxxas/new_uiut.git
+  502  git push -u origin --all # pushes up the repo and its refs for the first time
+  503  git push -u origin --all
+  504  git remote add origin https://lexxxas@bitbucket.org/lexxxas/new_uiut.git
+  505  git push -u origin --all
+  506  git push -u origin --tags
+  507  cd ../..
+  508  sudo chmod -R 777 web/
+  509  git status
+  510  cd web/new_uiut/
+  511  git status
+  512  git add *
+  513  git commit -am "Smooth navigation implemented. Page resizing handled fair enough. All pages except gallery are presentable"
+  514  git push origin master
+  515  git status
+  516  git commit -am "removed CONATCTS title from respective page. fixed navbar expand button alignment"
+  517  git push origin master
+  518  sudo chmod -R 777 *
+  519  git status
+  520  git add *
+  521  git commit -am "gallery initial preview built"
+  522  git push origin master
+  523  apt-get purge mysql-server mysql-client mysql-common mysql-client-5.5 mysql-server-5.5
+  524  sudo apt-get purge mysql-server mysql-client mysql-common mysql-client-5.5 mysql-server-5.5
+  525  sudo rm -r /etc/mysql/
+  526  sudo rm -r /usr/share/phpmyadmin/
+  527  sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+  528  sudo mysql_install_db
+  529  sudo /usr/bin/mysql_secure_installation
+  530  sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+  531  sudo apt-get install php5-mysql
+  532  sudo service apache2 restart 
+  533  sudo apt-get purge mysql-server apache2 php5
+  534  sudo apt-get remove apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libmysqlclient15off libnet-daemon-perl libplrpc-perl libpq5 mysql-client-5.0 mysql-common mysql-server mysql-server-5.0 php5-common php5-mysql
+  535  sudo apt-get remove apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libnet-daemon-perl libplrpc-perl libpq5 mysql-client-5.0 mysql-common mysql-server mysql-server-5.0 php5-common php5-mysql
+  536  sudo apt-get autoremove 
+  537  sudo rm -r /etc/apache2/
+  538  sudo apt-get update
+  539  sudo apt-get install apache2
+  540  sudo apt-get purge apache2.2-common
+  541  sudo apt-get install apache2.2-common
+  542  sudo service apache2 restart 
+  543  sudo apt-get remove apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libnet-daemon-perl libplrpc-perl libpq5 mysql-client-5.0 mysql-common mysql-server mysql-server-5.0 php5-common php5-mysql
+  544  sudo apt-get install apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libnet-daemon-perl libplrpc-perl libpq5 mysql-client-5.0 mysql-common mysql-server mysql-server-5.0 php5-common php5-mysql
+  545  sudo apt-get install apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5
+  546  sudo apt-get install apache2
+  547  sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+  548  sudo mysql_install_db
+  549  sudo /usr/bin/mysql_secure_installation
+  550  sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+  551  sudo apt-get install php5-curl 
+  552  sudo service apache2 restart 
+  553  sudo nano /etc/apache2/mods-enabled/dir.conf
+  554  sudo apt-get install apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libnet-daemon-perl libplrpc-perl libpq5 mysql-client-5.0 mysql-common mysql-server mysql-server-5.0 php5-common php5-mysql
+  555  sudo apt-get install apache2 apache2-mpm-prefork apache2-utils apache2.2-common libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libnet-daemon-perl libplrpc-perl libpq5
+  556  sudo service apache2 restart 
+  557  sudo nano /etc/apache2/sites-enabled/000-default 
+  558  sudo service apache2 restart 
+  559  sudo a2enmod rewrite
+  560  sudo service apache2 restart 
+  561  sudo apt-get install php5
+  562  sudo apt-get install libapache2-mod-php
+  563  sudo apt-get install libapache2-mod-php5
+  564  sudo a2enmod mod_php5
+  565  sudo nano /etc/apache2/httpd.conf 
+  566  sudo service apache2 restart 
+  567  sudo nano /etc/apache2/httpd.conf 
+  568  sudo service apache2 restart 
+  569  sudo nano /etc/apache2/mods-enabled/alias.conf 
+  570  cd /etc/apache2/
+  571  ld
+  572  ls
+  573  sudo nano apache2.conf 
+  574  sudo subl apache2.conf 
+  575  cd conf.d/
+  576  ls
+  577  cd ..
+  578  ls
+  579  sudo a2enmod php5
+  580  sudo apt-get purge libapache2-mod-php5 
+  581  sudo apt-get install libapache-mod-php5
+  582  sudo apt-get install libapache2-mod-php5
+  583  sudo a2enmod php5
+  584  sudo apt-get install phpmyadmin
+  585  sudo nano /etc/apache2/apache2.conf
+  586  sudo service apache2 restart 
+  587  pip install Django==1.6.2
+  588  sudo pip install Django==1.6.2
+  589  cd ~
+  590  pip uninstall Django==1.6.2
+  591  sudo pip uninstall Django==1.6.2
+  592  sudo easy_install virtualenv
+  593  cd leshik/apps/web/
+  594  mkdir django_learn
+  595  cd django_learn/
+  596  virtualenv --no-site-packages django-leshik
+  597  source django-leshik/bin/activate[B
+  598  ls
+  599  cd django-leshik/
+  600  ls -l
+  601  easy_install Django
+  602  ls bin/
+  603  django-admin.py 
+  604  django-admin.py startproject django_test
+  605  ls
+  606  ls django_test/
+  607  cd django_test/
+  608  ls
+  609  python manage.py runserver
+  610  deactivate 
+  611  clear
+  612  virtualenv ../bin/activate
+  613  source virtualenv ../bin/activate
+  614  cd ..
+  615  ls
+  616  source virtualenv django-leshik/bin/activate
+  617  source django-leshik/bin/activate
+  618  deactivate 
+  619  cd ..
+  620  rm -r django_learn/
+  621  ls
+  622  mkdir django_learn
+  623  ls
+  624  ls django_learn/
+  625  python -c "import django;print (django.get_version())"
+  626  sudo easy_install Django
+  627  ls
+  628  python -c "import django;print (django.get_version())"
+  629  rmdir django_learn/
+  630  django-admin.py startproject django_learn
+  631  ls -r
+  632  tree django_learn/
+  633  sudo apt-get install tree
+  634  tree django_learn/
+  635  django-admin.py 
+  636  django-admin.py testserver
+  637  cd django_learn/
+  638  manage.py testserver
+  639  ls
+  640  python manage.py testserver
+  641  cd ../new_uiut/
+  642  git checkout gallery_experiments 
+  643  git checkout master 
+  644  git merge gallery_experiments 
+  645  git status
+  646  killall chrome
+  647  git status
+  648  git commit -am "favicon changed. transitions working
+  649  "
+  650  git status
+  651  git add *
+  652  git commit -am "Changed favicon"
+  653  git status
+  654  cd ..
+  655  django-admin.py startproject uiut.md
+  656  django-admin.py startproject uiut_md
+  657  cd uiut_md/
+  658  tree
+  659  git init
+  660  git remote add origin https://lexxxas@bitbucket.org/lexxxas/uiut_md.git
+  661  git status
+  662  git add *
+  663  git commit -am "djnago initial project setup"
+  664  git push -u origin --all
+  665  python manage.py syncdb
+  666  mysql -u leshik -p -h 95.85.27.211
+  667  mysql -u leshik -p -h 95.85.27.211:3306
+  668  mysql -u leshik -p -h 95.85.27.211
+  669  python manage.py syncdb
+  670  python manage.py runserver
+  671  python manage.py runserver 8080
+  672  sudo chmod -R 777 *
+  673  python manage.py runserver 81
+  674  python manage.py runserver 881
+  675  python manage.py runserver 8087
+  676  sudo chmod -R 777 *
+  677  python manage.py runserver 8087
+  678  tree
+  679  ls
+  680  ls -r
+  681  ls -d
+  682  ls
+  683  ls -a
+  684  ls static/
+  685  clear
+  686  ls
+  687  ls static/
+  688  python manage.py runserver 8087
+  689  git status
+  690  git commit -am "Merge with new_uiut files successful"
+  691  git add *
+  692  git commit -am "Merge with new_uiut files successful #2"
+  693  ls
+  694  python
+  695  cd uiut_md/
+  696  ls
+  697  python
+  698  sudo python
+  699  sudo chmod -R 777 static/images/gallery/*
+  700  sudo python
+  701  cd ..
+  702  ls
+  703  git status
+  704  git add *
+  705  git commit -am "Good enough for beta testing"
+  706  git push -u origin --all
+  707  python
+  708  git status
+  709  git add *
+  710  git commit -am "Gallery fully functional"
+  711  git push origin master
+  712  sudo aptitude install libapache2-mod-wsgi
+  713  sudo apt-get install libapache2-mod-wsgi
+  714  sudo apt-get install apache2 apache2.2-common apache2-mpm-prefork apache2-utils libexpat1 ssl-cert
+  715  sudo a2enmod wsgi
+  716  sudo nano /etc/apache2/sites-available/uiut.md
+  717  git status
+  718  git add *
+  719  git commit -am "gallery updated"
+  720  git push origin master
+  721  pip install django-filebrowser
+  722  sudo pip install django-filebrowser
+  723  python manage.py collectstatic
+  724  python manage.py runserver 8087
+  725  python manage.py collectstatic
+  726  python manage.py test filebrowser
+  727  exit
+  728  git status
+  729  git checkout 
+  730  git status
+  731  git stadh
+  732  git stash
+  733  git status
+  734  rm -r static/admin/
+  735  rm -r static/filebrowser/
+  736  rm -r static/grappelli/
+  737  git status
+  738  ssh root@95.85.27.211
+  739  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  740  ssh root@95.85.27.211
+  741  cd leshik/apps/web/new_uiut/
+  742  git status
+  743  git checkout -b gallery_experiments
+  744  git commit -am "Watermark gallery title added"
+  745  git checkout master 
+  746  cd ../django_learn/
+  747  ls
+  748  python manage.py runserver
+  749  python manage.py runserver 0.0.0.0.0:8000
+  750  python manage.py runserver 0.0.0.0:8000
+  751  sudo pip install MySQL
+  752  sudo easy_install MySQL-python
+  753  sudo pip install MySQLdb
+  754  sudo easy_install python-mysqldb
+  755  sudo easy_install mysqldb
+  756  sudo apt-get install python-mysqldb
+  757  python manage.py syncdb
+  758  mysql
+  759  mysql --user=root
+  760  mysql --help
+  761  python manage.py syncdb
+  762  tree
+  763  rm -r build/
+  764  tree
+  765  python manage.py startapp polls
+  766  ls
+  767  tree polls/
+  768  python manage.py sql polls
+  769  python manage.py validate
+  770  python manage.py custom polls
+  771  python manage.py sqlcustom polls
+  772  python manage.py sqlclear polls
+  773  python manage.py syncdb
+  774  python manage.py shell
+  775  python manage.py runserver
+  776  ssh root@95.85.27.211
+  777  exit
+  778  killall chrome
+  779  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  780  sudo subl .config/sublime-text-3/Packages/User/Preferences.sublime-settings 
+  781  sudo subl /home/leshik/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings
+  782  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  783  cd ~
+  784  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  785  exit
+  786  ping 95.85.57.135
+  787  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  788  exit
+  789  sudo apt-get update
+  790  sudo apt-get upgrade 
+  791  sudo apt-get dist-upgrade 
+  792  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  793  exit
+  794  python leshik/apps/beatportVerifier/v\ 1/BP_top100_v_1.1.0.py 
+  795  exit
+  796  sudo apt-get install g++
+  797  cd Dropbox/FAF-101/Year\ 4\,\ Sem\ 2/
+  798  ls
+  799  cd Exam2_prep/
+  800  ls
+  801  gcc example5
+  802  g++ example5
+  803  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  804  cd utm/Semester\ III/Prog.\ C++/Learning\ C++/
+  805  ls
+  806  g++ First\ program.cpp 
+  807  ls
+  808  nano a.out 
+  809  gcc First\ program.cpp 
+  810  sudo apt-get install build-essential
+  811  g++ First\ program.cpp 
+  812  ls
+  813  nano a.out 
+  814  rm a.out 
+  815  rm First\ program.exe 
+  816  ls
+  817  g++ First\ program.cpp 
+  818  ls
+  819  sudo nano a.out 
+  820  a.out
+  821  ./a.out 
+  822  clear
+  823  ls
+  824  ./a.out 
+  825  cd ~/utm/Semester\ VIII/C++/
+  826  ls
+  827  tree
+  828  g++ test.cpp -o output.out
+  829  ./output.out 
+  830  g++ test.cpp -o output.out
+  831  ./output.out 
+  832  g++ test.cpp -o output.out
+  833  ./output.out 
+  834  g++ test.cpp -o output.out
+  835  ./output.out 
+  836  g++ test.cpp -o output.out
+  837  ./output.out 
+  838  g++ test.cpp -o output.out
+  839  ./output.out 
+  840  g++ test.cpp -o output.out
+  841  clear
+  842  g++ test.cpp -o output.out
+  843  ./output.out 
+  844  g++ test.cpp 
+  845  ls
+  846  ./a.out 
+  847  htop 
+  848  killall skype 
+  849  ssh root@95.85.27.211
+  850  exit
+  851  ssh root@95.85.27.211
+  852  exit
+  853  sudo apt-get update 
+  854  sudo apt-get autoremove 
+  855  sudo apt-get upgrade 
+  856  sudo apt-get dist-upgrade 
+  857  sudo mkdir /media/iso
+  858  cd /mnt/leData/VDrives/VDrives\ GAMES/Heroes\ 3/
+  859  sudo mount -o loop Heroes3.iso /media/iso
+  860  sudo umount /media/iso/
+  861  sudo mount -o loop H3_disk2.iso /media/iso
+  862  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  863  cd ~/leshik/apps/beatportVerifier/v\ 1/
+  864  python BP_top100_v_1.1.0.py 
+  865  rescuetime &
+  866  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  867  exit
+  868  ssh root@95.85.27.211
+  869  exit
+  870  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  871  exit
+  872  ssh juk@95.85.57.135 -L 5901/127.0.0.1/5901
+  873  cd utm/Diploma/
+  874  git init
+  875  git remote add origin https://github.com/lexxxas/siunl.git
+  876  git pull origin master
+  877  git status
+  878  git commit -am "Added the pack of bullet points, that could be used as reference for writing"
+  879  git add *
+  880  git commit -am "Added the pack of bullet points, that could be used as reference for writing"
+  881  git push origin master
+  882  sudo mv ~/Downloads/copy /opt/
+  883  cd utm/CodeJam\ 2014/Q1/
+  884  ls
+  885  python a.py 
+  886  python
+  887  cd B/
+  888  python b.py 
+  889  clear
+  890  python b.py 
+  891  cd large_input/
+  892  python b.py 
+  893  cd ../../C/
+  894  python c.py 
+  895  cd ../D
+  896  python code.py 
+  897  python
+  898  python code.py 
+  899  clear
+  900  python code.py 
+  901  python
+  902  python code.py 
+  903  python
+  904  python code.py 
+  905  python
+  906  python code.py 
+  907  cd large_input/
+  908  python code.py 
+  909  cd ~
+  910  cd leshik/apps/beatportVerifier/v\ 1/
+  911  python BP_top100_v_1.1.0.py 
+  912  sudo apt-get update
+  913  sudo apt-get upgrade 
+  914  sudo apt-get dist-upgrade 
+  915  exit
+  916  sudo apt-get update 
+  917  sudo apt-get upgrade 
+  918  sudo apt-get dist-upgrade 
+  919  exit
+  920  htop 
+  921  cd utm/
+  922  ls
+  923  cd Diploma/
+  924  ls
+  925  git status
+  926  history
+  927  history >> test.txt

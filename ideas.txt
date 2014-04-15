@@ -10,3 +10,5 @@
 - ? possibility to use system command vs my implementation and using both
 - Benefits from using/installing SIUNL
 - Working with multiple OSes and diff. package managers.
+- Determining what privileges requires the program or the command that is to be 
+  installed/executed.
