@@ -12,3 +12,8 @@
 - Working with multiple OSes and diff. package managers.
 - Determining what privileges requires the program or the command that is to be 
   installed/executed.
+- are there any dependencies to be aware of?
+- analyze history of commands on first run (and continue to monitor it)
+  in order to determine what are the most common commands and offer creating short 
+  aliases for these
+  

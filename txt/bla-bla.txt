@@ -45,4 +45,29 @@ file editing, though it has loads of options and if these are set the wrong way,
 
 "grep" is fine as well, allows searching. Has several options as well, combined with sed makes a powerful tool for editing files on the fly. 
 
-Function that displays currently available custom aliases
+Function that displays currently available custom aliases.
+
+Worth mentioning is the fact that bash aliases can be added in place, using:
+        alias some_name="bash command"
+The drawback of this approach is its impersistence, the alias that has been created will be accessible only from the current tab/window of the terminal, even if one opens a new tab, the alias will not be accessible.
+
+Despite the fact that functions appear exactly the same thing as aliases themselves from a user's point of view these are grouped/considered in a different way by the shell. 
+
+- functions are commands. The list of all commands can be viewed calling "compgen -c"
+
+- aliases... are aliases, and the list of these is very short, much shorter than one could imagine. The list can be obtained calling "compgen -a";
+
+The list of all default aliases (there are only 9):
+
+    1) alert
+    2) background
+    3) egrep
+    4) fgrep
+    5) grep
+    6) l
+    7) la
+    8) ll
+    9) ls
+
+-------------------------------------------------------------------------
+Adding search function, experimenting with auto-complete.
