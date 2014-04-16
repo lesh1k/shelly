@@ -5,3 +5,41 @@ Creating an alias is not a big deal in bash, one simply appends at the end of ~/
     e.g. alias pretty_list = "tree"
 
 There is however a better way of doing the above mentioned operations. Aliases can be added to a separate file and will not mess with default .bashrc contents. Aliases from this separate file are added in case there exists a file ~/.bash_aliases (by default) or any other file, the path to which we set in the config as follows:
+
+        if [ -f ~/utm/Diploma/.siunl_aliases ]; then
+            . ~/utm/Diploma/.siunl_aliases
+        fi
+
+If a file with the given name exists and, well, IS a file then
+//////////////////EDIT///////////////
+the commands, functions, aliases that are defined in this file are copied or added to the list of bash commands, behavior similar to including a library in C/C++/Java.
+////////////////////////////////////
+
+Important is that even if the you have defined aliases in some_file_for_aliases or even in ~/.bashrc itself, newly defined commands will not be yet available in the your CLI. 
+////////////////////EDIT//////////////////////
+these need loaded. To do so, type in:
+. ~/.bashrc
+
+As far as I understood this reloads bashrc file.
+//////////////////////////////////////////////
+
+Let's explain a little what all the symbols represent in ". ~/.bashrc":
+
+/////////////////////EDIT///////////////////////
+1) . - no idea yet
+2) ~ - it's the shortcut to /home/"username"
+3) .bashrc - is a filename, and contrary to windows concept, any filename preceded by a "." in linux is considered a hidden file. Thus, .bashrc is a hidden file named "bashrc"
+//////////////////////////////////////////////////
+
+Added a function to create new aliases (add_alias). It takes as input two arguments and adds an alias to .siunl_aliases, then reloads the .bashrc file so that newly added alias is available right away. Also, added a function for removing aliases, takes one parameter - alias_name. Using "sed" and unalias:
+        unalias -a "$1"
+        sed -i '/asa/d' ~/utm/Diploma/.siunl_aliases
+Afterwards it mandatorily reloads .bashrc in order to contain the updated list of commands. "unalias -a" as it seems clear from its name is the opposite of alias and what it does is removing the alias.
+////////////////////////EDIT///////////////////////////////////////////
+why is there used the parameter "-a" only God knows, I can only suppose it stands for alias))
+/////////////////////////////////////////////////////////////////////
+
+"sed" appears to be an awesome function that could be used for easy (khaa)
+file editing, though it has loads of options and if these are set the wrong way, one could end up with an erased file. A PERFECT CANDIDATE FOR human.sh
+
+"grep" is fine as well, allows searching. Has several options as well, combined with sed makes a powerful tool for editing files on the fly. 

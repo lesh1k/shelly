@@ -1,0 +1,12 @@
+function add_alias(){
+    #receives 2 arguments
+    #adds an alias with name "arg1" and actual function "arg2"
+    echo -e "alias $1=\"$2\"" >> ~/utm/Diploma/.siunl_aliases
+    . ~/.bashrc
+}
+
+function remove_alias(){
+    unalias -a "$1"
+    sed -i "/alias "$1"=/d" ~/utm/Diploma/.siunl_aliases
+    . ~/.bashrc
+}
