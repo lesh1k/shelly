@@ -10,3 +10,9 @@ function remove_alias(){
     sed -i "/alias "$1"=/d" ~/utm/Diploma/.siunl_aliases
     . ~/.bashrc
 }
+
+function siunl_aliases(){
+    echo -e "================================================\n"
+    grep "alias " ~/utm/Diploma/.siunl_aliases
+    echo -e "\n================================================"
+}

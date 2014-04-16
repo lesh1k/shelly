@@ -35,6 +35,7 @@ Added a function to create new aliases (add_alias). It takes as input two argume
         unalias -a "$1"
         sed -i '/asa/d' ~/utm/Diploma/.siunl_aliases
 Afterwards it mandatorily reloads .bashrc in order to contain the updated list of commands. "unalias -a" as it seems clear from its name is the opposite of alias and what it does is removing the alias.
+
 ////////////////////////EDIT///////////////////////////////////////////
 why is there used the parameter "-a" only God knows, I can only suppose it stands for alias))
 /////////////////////////////////////////////////////////////////////
@@ -43,3 +44,5 @@ why is there used the parameter "-a" only God knows, I can only suppose it stand
 file editing, though it has loads of options and if these are set the wrong way, one could end up with an erased file. A PERFECT CANDIDATE FOR human.sh
 
 "grep" is fine as well, allows searching. Has several options as well, combined with sed makes a powerful tool for editing files on the fly. 
+
+Function that displays currently available custom aliases

@@ -1,8 +1,8 @@
 .siunl_admin:
     - verify if functions receive all required parameters
     - option to edit alias
-    - print all available aliases
-    - ability to remove aliases
+    - (IMPROVEMENTS possible) print all available aliases
+    - (DONE) ability to remove aliases
     - what happens when one tries to add an alias that already exists?
     - what happens when one tries to edit an alias that does NOT exist?
 
