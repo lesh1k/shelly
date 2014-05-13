@@ -71,3 +71,51 @@ The list of all default aliases (there are only 9):
 
 -------------------------------------------------------------------------
 Adding search function, experimenting with auto-complete.
+-------------------------------------------------------------------------
+
+****************Determining OS version, codename, package manager and 32/64 bit
+
+for this purpose, on ubuntu and its derivatives can be used "lsb_release -a" to get all available info regarding system, codename, bits. Same applies to ubuntu derivatives, I suppose for debian as well, as ubuntu is a derivativeof the latter. OpenSUSE also complies with that standard and allows determining system info as mentioned above. Difficulties appear when one gets to Fedora. This distribution does not allow using lsb_release, nevertheless it should have an alternative, it is: "cat /etc/fedora-release" OR "cat /etc/issue", the latter tries to display some info about kernel, unsuccessfully, it prints only the following: "Kernel \r on an \m (\l)". Thus the first option for getting fedora release name is better.
+
+After little research and search a common solution for supposedly all linux distibutions was found: "cat /etc/os-release", displays all the info about the distro except two bits of information that are still needed for the human.sh to get setup. These are: hardware platform (32/64bits) and available package managers.
+Determining hardware platform is easier than getting distro info. All distributions on which testing was done support uname command that display Linux information (not to be mistaken with linux distro). Hardware platform info is obtained as follows: "uname -i", this command returns x86_64 for 64bit systems and supposedly x86 for 32bit systems.
+
+============NOTE==
+tests are performed on:
+
+1) elementary OS Luna (x86_64)
+2) Ubuntu 14.04 LTS, Trusty Tahr (x86_64)
+3) Fedora 20 (Heisenbug) (x86_64)
+4) OpenSUSE 13.1 Bottle (x86_64)
+5) MacOS is planned
+
+==EOF_NOTE================
+
+Implemented two more aliases. siunl_refresh that allows easy loading of newly added aliases into ========memory=========== and tellme.
+The latter is much more interesting as it is the first step to some plain english discussion between a user and his computer. Currently two scenarios were considered:
+1) tellme about os - outputs all the info about the system (name, id, id_like, pretty_name and version)
+2) tellme about hardware platform - tells if the system is 32/64 bit.
+
+Any alias that is called outputs the actual command that was used. Here's an example output for calling the first command
+
+leshik@AsusL:~/utm/Diploma/src$ tellme about os
+using "cat /etc/os-release" 
+
+NAME="elementary OS"
+VERSION="0.2 Luna"
+ID="elementary OS"
+ID_LIKE=ubuntu
+PRETTY_NAME="elementary OS Luna"
+VERSION_ID="0.2"
+
+Further steps imply analyzing and determining best way for calling an alias, meaning that the call is short, yet explicit and easy to understand, i.e. human.sh ideology compatible.
+
+Made first steps for implementing "is" alias, as this one could serve well requests as "is my system 32bit". 
+That is where questions appear, should the word "my" be included as a parameter, or should it be not. On the other hand a very nice approach might be considering the case that there might be "my" or there might be not. If so, "tellme about os" and "tellme about my os" should return the same results.
+
+For the current milestone ability to determine available package manager has yet to be added and for the sake of using the latter, a human.sh alias for installing software should be added, i.e. (install skype).
+
+Talking about skype. One should know about 3rd party repositories and about other official repos that are available, yet not present in the current distro or the installed version of the distro. 
+This will be another milestone.
+
+Another important function that should get its human alias is find, it might obtain a variety of parameters which in their turn can be interpreted in several ways. Like "find mySomething", can search down the directory tree, or it can search everyehere or it can search down the tree and several steps up the tree or it can search equally several steps up and down the tree. These are problems that ought to be solved during actual implementation.
