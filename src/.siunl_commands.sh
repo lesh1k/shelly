@@ -1,26 +1,62 @@
-# parameter-completion
+function tellme(){
+    # echo -e "\e[1m"
+    query=${@,,}
 
-function search ()   #  By convention, the function name
-{                 #+ starts with an underscore.
-  local cur
-  # Pointer to current completion word.
-  # By convention, it's named "cur" but this isn't strictly necessary.
-
-  COMPREPLY=()   # Array variable storing the possible completions.
-  cur=${COMP_WORDS[COMP_CWORD]}
-
-  case "$cur" in
-    -*)
-    COMPREPLY=( $( compgen -W '-a -d -f -l -t -h --aoption --debug \
-                               --file --log --test --help --' -- $cur ) );;
-#   Generate the completion matches and load them into $COMPREPLY array.
-#   xx) May add more cases here.
-#   yy)
-#   zz)
-  esac
-
-  return 0
+    if [ "$query" = "about os" ] || [ "$query" = "about my os" ] || [ "$query" = "about my system" ]; then
+        echo -e 'using "cat /etc/os-release" \n'
+        cat /etc/os-release
+        # echo -e "\e[0m"
+        return
+    fi
+    
+    if [ "$query" = "about my hardware platform" ] || [ "$query" = "about my arch" ]; then
+        echo -e 'using "uname -i"\n'
+        hp=$(uname -i)
+        if [ $hp = "x86_64" ]; then
+            echo -e "Your system is 64 bit (x86_64)"
+        else
+            echo -e "Your system is 32 bit (x86)"
+        fi
+        # echo -e "\e[0m"
+        return
+    fi
+    if [ "$query" = "about my package manager" ]; then
+        _PMANAGER_DETERMINE
+        echo -e "Your package manager is $_PMANAGER"
+        return
+    else
+        echo 'Sorry, I did not understand this one. Teach me, Master!'
+    fi
+    # echo -e "\e[0m"
+    return
 }
 
-complete -F search -o filenames $(pwd)
-#        ^^ ^^^^^^^^^^^^  Invokes the function _UseGetOpt-2.
+function _PMANAGER_DETERMINE(){
+    _PMANAGER="UNDEFINED"
+    #Determine package manager
+    if [ -f /usr/bin/apt-get ]; then
+        _PMANAGER="APT"
+    fi
+    if [ -f /usr/bin/yum ]; then
+        _PMANAGER="YUM"
+    fi
+    if [ -f /usr/bin/zypper ]; then
+        _PMANAGER="ZYPPER"
+    fi
+}
+
+function please(){
+    query=${@,,}
+    _PMANAGER_DETERMINE
+
+    if [ "$query" = "do full update" ]; then
+        if [ "$_PMANAGER" = "APT" ]; then
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get dist-upgrade
+        fi
+    else
+        echo 'Sorry, I did not understand this one. Teach me, Master!'
+    fi
+    return
+}

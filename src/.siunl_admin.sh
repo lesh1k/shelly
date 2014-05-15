@@ -27,33 +27,3 @@ function siunl_aliases(){
 function siunl_refresh(){
     . ~/.bashrc
 }
-
-function tellme(){
-    # echo -e "\e[1m"
-    if [ $1 = 'about' ] && [ $2 = 'os' ]; then
-        echo -e 'using "cat /etc/os-release" \n'
-        cat /etc/os-release
-        # echo -e "\e[0m"
-        return
-    fi
-    
-    if [ $1 = 'about' ] && [ $2 = 'hardware' ] && [ $3 = 'platform' ]; then
-        echo -e 'using "uname -i"\n'
-        hp=$(uname -i)
-        if [ $hp = "x86_64" ]; then
-            echo -e "Your system is 64 bit (x86_64)"
-        else
-            echo -e "Your system is 32 bit (x86)"
-        fi
-        # echo -e "\e[0m"
-        return
-    else
-        echo 'Sorry, I did not understand this one'
-    fi
-    # echo -e "\e[0m"
-    return
-}
-
-function is(){
-    return
-}

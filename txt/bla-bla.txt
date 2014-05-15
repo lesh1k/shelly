@@ -119,3 +119,33 @@ Talking about skype. One should know about 3rd party repositories and about othe
 This will be another milestone.
 
 Another important function that should get its human alias is find, it might obtain a variety of parameters which in their turn can be interpreted in several ways. Like "find mySomething", can search down the directory tree, or it can search everyehere or it can search down the tree and several steps up the tree or it can search equally several steps up and down the tree. These are problems that ought to be solved during actual implementation.
+
+--------
+Package manager detection. There is a tool that says it is universal for all UNIX-based systems. The tool can be found here: https://github.com/icy/pacapt/blob/master/pacapt#L168 and is named "pacapt". From its description it supports:
+
+    pacman        by Arch Linux, ArchBang, Manjaro, etc.
+    dpkg/apt-get  by Debian, Ubuntu, etc.
+    homebrew      by Mac OS X
+    macports      by Mac OS X
+    yum/rpm       by Redhat, CentOS, Fedora, etc.
+    portage       by Gentoo
+    zypper        by OpenSUSE
+
+Package manager detection was realized using the following chunk of code: 
+
+        #Determine package manager
+        if [ -f /usr/bin/apt-get ]; then
+            _PMANAGER="APT"
+        fi
+        if [ -f /usr/bin/yum ]; then
+            _PMANAGER="YUM"
+        fi
+        if [ -f /usr/bin/zypper ]; then
+            _PMANAGER="ZYPPER"
+        fi
+
+Having the required information about the system and the package manager, allows installing and uninstalling software, as well as updating system and apps, refreshing the list of repos and other stuff.
+
+-----------
+Added possibility to do a full system update using "please do full update", currently only available for apt package manager. Optimized query matching, transforming all requests to lowercase.
+At the moment $@ is used, this variable concatenates all arguments passed to a function using ' ' a space. 

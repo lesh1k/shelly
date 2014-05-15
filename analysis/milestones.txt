@@ -1,4 +1,4 @@
-1) Determining OS info, hardware platform and available package managers
+DONE: 1) Determining OS info, hardware platform and available package managers
 2) Fetching the list of 3rd party repos and/or official repos that are not
    included in the current distro or installed version of the distro.
 3) Aliases for updating apps. Updating OS. Updating apps and OS.
