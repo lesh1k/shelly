@@ -1,3 +1,18 @@
+function is_in_array(){
+    _IN_ARRAY=0
+    echo ${1}
+    echo ${2}
+    for item in "${1[@]}"; do
+        if [[ $item = "$2" ]]; then
+            _IN_ARRAY=1
+            break
+        fi
+    done
+    return
+}
+
+####################################
+
 function tellme(){
     # echo -e "\e[1m"
     query=${@,,}
