@@ -1,6 +1,0 @@
-alias newalias2="echo just printing some text"
-alias one="echo 1"
-alias two="echo 2"
-alias three="echo 3"
-alias 1="echo very short alias"
-alias vladuts="echo baiat bravo"

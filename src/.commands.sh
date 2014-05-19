@@ -1,26 +1,9 @@
-function is_in_array(){
-    _IN_ARRAY=0
-    echo ${1}
-    echo ${2}
-    for item in "${1[@]}"; do
-        if [[ $item = "$2" ]]; then
-            _IN_ARRAY=1
-            break
-        fi
-    done
-    return
-}
-
-####################################
-
 function tellme(){
-    # echo -e "\e[1m"
     query=${@,,}
 
     if [ "$query" = "about os" ] || [ "$query" = "about my os" ] || [ "$query" = "about my system" ]; then
         echo -e 'using "cat /etc/os-release" \n'
         cat /etc/os-release
-        # echo -e "\e[0m"
         return
     fi
     
@@ -32,7 +15,6 @@ function tellme(){
         else
             echo -e "Your system is 32 bit (x86)"
         fi
-        # echo -e "\e[0m"
         return
     fi
     if [ "$query" = "about my package manager" ]; then
@@ -42,7 +24,6 @@ function tellme(){
     else
         echo 'Sorry, I did not understand this one. Teach me, Master!'
     fi
-    # echo -e "\e[0m"
     return
 }
 

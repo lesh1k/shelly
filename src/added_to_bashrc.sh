@@ -1,13 +1,13 @@
-#####SIUNL/human.sh############
-if [ -f ~/utm/Diploma/src/.siunl_aliases.sh ]; then
-    . ~/utm/Diploma/src/.siunl_aliases.sh
+#####SIUNL/Shelly/human.sh############
+if [ -f ~/utm/Diploma/src/.aliases.sh ]; then
+    . ~/utm/Diploma/src/.aliases.sh
 fi
 
-if [ -f ~/utm/Diploma/src/.siunl_admin.sh ]; then
-    . ~/utm/Diploma/src/.siunl_admin.sh
+if [ -f ~/utm/Diploma/src/.admin.sh ]; then
+    . ~/utm/Diploma/src/.admin.sh
 fi
 
-if [ -f ~/utm/Diploma/src/.siunl_commands.sh ]; then
-    . ~/utm/Diploma/src/.siunl_commands.sh
+if [ -f ~/utm/Diploma/src/.commands.sh ]; then
+    . ~/utm/Diploma/src/.commands.sh
 fi
 ###############################

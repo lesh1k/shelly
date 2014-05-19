@@ -1,7 +1,0 @@
-1) software installation
-    - determining OS
-    - determining available package managers
-    - adding human.sh aliases for manging software install/remove/update
-    - retrieving ppa-s list
-
-2) 

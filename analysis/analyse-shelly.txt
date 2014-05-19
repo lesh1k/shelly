@@ -1,0 +1,27 @@
+IDEAS
+------------------------------------
+
+- Exisiting solutions,which are these, if there are any, why is SIUNL better, if it is. (betty, pacapt)
+    * betty is not pure bash, it's ruby
+- Display actual command that is executed (?? possibility to turn off)
+- Auto complete
+- Benefits from using/installing Shelly
+- Support for diff OSes and package managers
+    * For software install pacapt might be an option
+- Ask if the user is willing to share his history of commands and allows further recording of commands for further improvement of Shelly
+- Manual. Documentation and "help" function.
+- Option to display all available aliases
+- grep, sed, awk
+- make a list of repos. add 3rd party software install
+
+
+Bells&whistles: 
+    
+    a) Text coloring and styling
+    b) word definitions
+
+
+DONE: 
+-------------------------------------
+
+- Determining OS info, hardware platform and available package managers

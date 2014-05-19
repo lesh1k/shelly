@@ -1,21 +1,14 @@
-SIUNL/human.sh/Shell Interaction Using Natural Language
-=======================================================
+Shelly/SIUNL/human.sh/Shell Interaction Using Natural Language
+====================================================================
 
 Idea: Andrei Lisnic - human.sh (https://github.com/alisnic/human.sh)
 
-================================================================
-FILES
-=================================================================
+====================================================================
 
-.siunl_aliases          - aliases added for the project
-
-.siunl_admin            - aliases and function added to ease the process of editing .siunl_aliases
-
-added_to_bashrc.sh      - just to remember what changes were introduced in bashrc, also to follow
-                          the history (in time) and to ease adding comments to code in bla-bla
-
-bla-bla.txt             - actual theoretical shit and explanations that might appear in the final version of 
-                          the thesis
-
-*History.txt            - contain the history of commands of various people. Might serve well in determining
-                          the list of widely used commands or of the ones that were most often mistyped
+Shelly - is an easy to use CLI tool that allows accomplishing work
+via Linux terminal (that has bash shell) without necessarily
+knowing how things are done in Linux or in this certain Linux
+distro. You can just type "shelly install skype" OR "shelly mount MyCD",
+etc. And when the ork is done, Shelly will be there to entertain you.
+"shelly lets go for a drink", "shelly make me a sandwhich", "shelly I
+love you"
