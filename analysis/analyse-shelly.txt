@@ -13,12 +13,15 @@ IDEAS
 - Option to display all available aliases
 - grep, sed, awk
 - make a list of repos. add 3rd party software install
+- word-distance based analysis. if input has "do I have Python", the answer could be "Python is not installed,
+  however, there's python. Maybe that's what you were looking for"
 
 
 Bells&whistles: 
     
     a) Text coloring and styling
     b) word definitions
+    c) do a barrel roll
 
 
 DONE: 

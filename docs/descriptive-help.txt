@@ -1,0 +1,26 @@
+Shelly can be asked using: 
+    - shelly
+    - shelly,
+    - Shelly
+    - Shelly,
+    - sweetie
+    - Sweetie
+    - sweetie,
+    - Sweetie,
+    - sweety
+    - Sweety
+    - sweety,
+    - Sweety,
+
+
+Shelly can answer the following:
+    - do I have {program_name}
+    - whats my system
+    - update apps | update applications |
+    - update system | update os | update distro | update distribution
+    - update os and apps | update all | update system and apps | update apps and os
+    - 
+
+You can discuss with Shelly:
+    - whats the meaning of life
+    - why do we live

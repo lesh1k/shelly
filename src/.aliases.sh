@@ -1,3 +1,14 @@
-alias sup="shelly_reload"
-alias supal="shelly_load_aliases"
-alias supac="shelly_load_auto_complete"
+alias sup="shelly_reload" # Reload aliases and auto-complete files
+alias supa="shelly_load_aliases" # Reload all aliases
+alias supc="shelly_load_auto_complete" # Reload all custom auto-complete files
+alias shelly,="shelly"
+alias Shelly="shelly"
+alias Shelly,="shelly"
+alias sweetie="shelly"
+alias Sweetie="shelly"
+alias sweetie,="shelly"
+alias Sweetie,="shelly"
+alias sweety="shelly"
+alias Sweety="shelly"
+alias sweety,="shelly"
+alias Sweety,="shelly"
