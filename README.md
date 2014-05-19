@@ -6,6 +6,7 @@ Idea: Andrei Lisnic - human.sh (https://github.com/alisnic/human.sh)
 ====================================================================
 
 Requirements: bash
+
 Restrictions: currently works on ubuntu. Should work on its derivatives.
             Other distros TBD
 
