@@ -84,6 +84,18 @@ function shelly(){
         return
     fi
 
+    if [ "$all_but_last" = "uninstall" ]; then
+        echo "Using: sudo apt-get -q -q autoremove '${@: -1}'"
+        sudo apt-get -q -q autoremove ${@: -1}
+        return
+    fi
+
+    if [ "$all_but_last" = "install" ]; then
+        echo "Using: sudo apt-get -q -q install '${@: -1}'"
+        sudo apt-get -q -q install ${@: -1}
+        return
+    fi
+
     ############FUN##########################
     if [ "$query" = "whats the meaning of life" ] || [ "$query" = "why do we live" ]; then
         echo -e "IMHO, we live to eat, sleep, rave, repeat.\nNevertheless, the RIGHT answer is 42."

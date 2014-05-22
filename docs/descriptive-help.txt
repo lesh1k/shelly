@@ -22,6 +22,7 @@ Shelly can answer the following:
     - whats my username | who am i | whoami | tellme my username | tell me my username | username
     - which {program_name}
     - what {program_name} | what version is {program_name}
+    - install/uninstall {program_name}
 
 You can discuss with Shelly:
     - whats the meaning of life | why do we live
