@@ -1,0 +1,17 @@
+% Appendix E
+
+\chapter{Test Suite}
+\label{AppendixD}
+\lhead{Appendix D. \emph{Test Suite}}
+
+% let's define some commands to include the test suite
+\newcommand{\lTest[1]}{\lstinputlisting[style=ruby]{/home/dimon/sandbox/rails/discite/spec/\string#1}}
+\newcommand{\lFeatureTests[1]}{\lstinputlisting[style=ruby]{/home/dimon/sandbox/rails/discite/spec/features/\string#1}}
+\newcommand{\lPagesTests[1]}{\lstinputlisting[style=ruby]{/home/dimon/sandbox/rails/discite/spec/pages/\string#1}}
+
+
+\lTest[spec_helper.rb]
+
+\lFeatureTests[home_spec.rb]
+
+\lPagesTests[home_page.rb]

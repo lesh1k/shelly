@@ -3,6 +3,7 @@ function shelly(){
     length=$(($#-1))
     all_but_last=${@:1:$length}
     username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
+    shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
 
     if [ "${all_but_last,,}" == "do i have" ]; then
         echo -e 'Using: command -v ${@: -1} 2>/dev/null 1>/dev/null && { echo >&1 "Yes. You can launch it using '"$(command -v ${@: -1})"' OR you can try '"${@: -1}"'"; } || { echo >&2 "It seems that - ${@: -1} - is not installed."; }'
@@ -62,6 +63,27 @@ function shelly(){
         return
     fi
 
+    if [ "$all_but_last" = "what" ] || [ "$all_but_last" = "what version is" ]; then
+        app_location=$(command -v "${@: -1}")
+        if [ -n "$app_location" ]; then
+            echo "Using: command -v '${@: -1}'"
+            echo "dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //'"
+            echo "dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //'"
+            version=$(dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //')
+            architecture=$(dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //')
+            echo "Your version of ${@: -1} is: $version. Architecture: $architecture."
+        else
+            echo -e "It seems that ${@: -1} is not installed.\nI might install it if I find the right repository. Just ask "
+        fi
+        return
+    fi
+
+    if [ "$all_but_last" = "which" ]; then
+        echo "Using: which '${@: -1}'"
+        which ${@: -1}
+        return
+    fi
+
     ############FUN##########################
     if [ "$query" = "whats the meaning of life" ] || [ "$query" = "why do we live" ]; then
         echo -e "IMHO, we live to eat, sleep, rave, repeat.\nNevertheless, the RIGHT answer is 42."
@@ -81,6 +103,26 @@ function shelly(){
     if [ "$query" = "will you marry me" ] ; then
         shelly do you love me
         echo -e "I would, for sure. However I fear that our hardware is not compatible... yet"
+        return
+    fi
+
+    if [ "$query" = "laugh with me" ] || [ "$query" = "its a joke" ] || [ "$query" = "can you laugh" ] || [ "$query" = "it was a joke" ] || [ "$query" = "laugh out loud" ]; then
+        if [ -f "$shelly_root_path/art/lol" ]; then
+            cat $shelly_root_path/art/$filename
+            echo -e "\n"
+        else
+            echo "No!"
+        fi
+        return
+    fi
+
+    ###################Order matters################
+
+    ##generate filename by replacing " " with "-"
+    filename=$(echo $query | sed 's/ /-/g')
+    if [ -f "$shelly_root_path/art/$filename" ]; then
+        cat $shelly_root_path/art/$filename
+        echo -e "\n"
         return
     fi
 

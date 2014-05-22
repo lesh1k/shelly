@@ -1,0 +1,10 @@
+1) shelly which python, should return the output of "which python" or else?
+2) thesis. structure (this one is not really a question, a discussion point)
+3) thesis. writing. as mr. Bostan says, there should be roughly 45-55 pages 
+  exclusively on topic (I mean without economic part). Currently I might pull
+  out 2-4 pages of intro that make real sense, about 5 pages of "making of" process
+  2-5 more pages describing how more complex functions work and why certain 
+  phrases were considered and others not. With this in mind there are about 33-40 pages
+  more, that need to have text on them. Should I describe how separate bash functions work?
+  P.S. yeah there will also be 1-2 pages for conclusions, still more than 30 - blank
+4)

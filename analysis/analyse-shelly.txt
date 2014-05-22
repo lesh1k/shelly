@@ -28,3 +28,11 @@ DONE:
 -------------------------------------
 
 - Determining OS info, hardware platform and available package managers
+
+
+THEORY
+-------------------------------------
+
+- Motivation (I would use, useful for beginners, simply interested in shell)
+- Abstract (Edit README)
+- Continuous use with tutor mode on can help learn bash commands

@@ -1,0 +1,232 @@
+%% ----------------------------------------------------------------
+%% Thesis.tex -- MAIN FILE (the one that you compile with LaTeX)
+%% ----------------------------------------------------------------
+
+% Set up the document
+% Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
+\documentclass[a4paper, 11pt, oneside]{Thesis}
+% Location of the graphics files (set up for graphics to be in PDF format)
+\graphicspath{{Figures/}}
+
+% Include any extra LaTeX packages required
+% Use the "Natbib" style for the references in the Bibliography
+\usepackage[square, numbers, comma, sort&compress]{natbib}
+% Needed for the "comment" environment to make LaTeX comments
+\usepackage{verbatim}
+% Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{vector}
+% Colours hyperlinks in blue, but this can be distracting if there are many
+% links.
+\hypersetup{urlcolor=blue, colorlinks=true}
+
+%% ----------------------------------------------------------------
+\begin{document}
+% Begin Roman style (i, ii, iii, iv...) page numbering
+\frontmatter
+
+% Set up the Title Page
+\title  {Skill Social Network} \authors  {\texorpdfstring
+{\href{dima@ceata.org}{Dumitru Ursu}} {Dumitru Ursu} }
+% Do not change this here, instead these must be set in the "Thesis.cls" file,
+% please look through it instead
+\addresses  {\groupname\\\deptname\\\univname} \date       {\today} \subject
+{} \keywords   {}
+
+\maketitle
+%% ----------------------------------------------------------------
+% It is better to have smaller font and larger line spacing than the other way
+% round
+\setstretch{1.3}
+
+% Define the page headers using the FancyHdr package and set up for one-sided
+% printing
+\fancyhead{}  % Clears all page headers and footers \rhead{\thepage}  % Sets the
+right side header to show the page number \lhead{}  % Clears the left side page
+header
+
+ % Finally, use the "fancy" page style to implement the FancyHdr headers
+\pagestyle{fancy}
+
+%% ----------------------------------------------------------------
+% Declaration Page required for the Thesis, your institution may give you a
+% different text to place here
+\Declaration{
+
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
+I, Dumitru Ursu, declare that this thesis titled, `Skill social network' and the
+work presented in it are my own. I confirm that:
+
+\begin{itemize}
+\item[\tiny{$\blacksquare$}] This work was done wholly or mainly
+            while in candidature for a research degree at this University.
+
+\item[\tiny{$\blacksquare$}] Where any part of this thesis has previously been
+    submitted for a degree or any other qualification at this University or any
+    other institution, this has been clearly stated.
+
+\item[\tiny{$\blacksquare$}] Where I have consulted the published work of
+    others, this is always clearly attributed.
+
+\item[\tiny{$\blacksquare$}] Where I have quoted from the work of others, the
+    source is always given. With the exception of such quotations, this thesis
+    is entirely my own work.
+
+\item[\tiny{$\blacksquare$}] I have acknowledged all main sources of help.
+
+\item[\tiny{$\blacksquare$}] Where the thesis is based on work done by myself
+jointly with others, I have made clear exactly what was done by others and what
+I have contributed myself.  \\
+\end{itemize}
+
+Signed:\\ \rule[1em]{25em}{0.5pt}  % This prints a line for the signature
+
+Date:\\ \rule[1em]{25em}{0.5pt}  % This prints a line to write the date
+}
+\clearpage  % Declaration ended, now start a new page
+
+%% ----------------------------------------------------------------
+% The "Funny Quote Page"
+\pagestyle{empty}  % No headers or footers for the following pages
+
+\null\vfill
+% Now comes the "Funny Quote", written in italics
+\textit{``Aut disce aut discede''}\\
+\textit{``Either learn or go away''}
+
+
+\begin{flushright} Latin saying \end{flushright}
+
+\vfill\vfill\vfill\vfill\vfill\vfill\null
+\clearpage  % Funny Quote page ended,
+%% ----------------------------------------------------------------
+
+% The Abstract Page
+\addtotoc{Abstract} % Add the "Abstract" page entry to the Contents
+\abstract{
+\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+
+This thesis covers the design and implementation of a peer-to-peer teaching
+network. The primary goals is to use cutting-edge technology in order to create
+the social network and to explore unconventional virtual learning techniques.
+One of the secondary goals of the system is to make it standard-based, web-only,
+and so to make it accessible, and independent of proprietary technology.
+
+In order to make the software more useful, it is released under a Free Software
+license, \href{http://www.gnu.org/licenses/agpl-3.0.html}{AGPLv3}. The code can
+be downloaded from \href{https://gitorious.org/discite/discite/}{Gitorious}, and
+used without restrictions by universities or high schools. Deployment scripts
+are provided, and so is documentation.
+
+An instance of the application is running at \url{http://discite.info}. The
+name of the application, "Discite", means "to learn" in Latin.
+
+}
+
+\clearpage  % Abstract ended, start a new page
+%% ----------------------------------------------------------------
+
+% Reset the line-spacing to 1.3 for body text (if it has changed)
+\setstretch{1.3}
+
+% The Acknowledgements page, for thanking everyone
+\acknowledgements{
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
+The acknowledgements and the people to thank go here, don't forget to include
+your project advisor\ldots
+
+}
+\clearpage  % End of the Acknowledgements
+%% ----------------------------------------------------------------
+
+% The page style headers have been "empty" all this time, now use the "fancy"
+% headers as defined before to bring them back
+\pagestyle{fancy}
+
+
+%% ----------------------------------------------------------------
+\lhead{\emph{Contents}}  % Set the left side page header to "Contents"
+\tableofcontents  % Write out the Table of Contents
+
+%% ----------------------------------------------------------------
+% Set the left side page header to "List if Figures"
+\lhead{\emph{List of Figures}}
+\listoffigures  % Write out the List of Figures
+
+%% ----------------------------------------------------------------
+% Set the left side page header to "List of Tables"
+\lhead{\emph{List of Tables}}
+\listoftables  % Write out the List of Tables
+
+%% ----------------------------------------------------------------
+\setstretch{1.5}  % Set the line spacing to 1.5, this makes the following tables easier to read
+\clearpage  % Start a new page
+\lhead{\emph{Abbreviations}}  % Set the left side page header to "Abbreviations"
+\listofsymbols{ll}  % Include a list of Abbreviations (a table of two columns)
+{
+% \textbf{Acronym} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or \\
+    \textbf{RoR} & \textbf{R}uby \textbf{o}n \textbf{R}ails \\
+    \textbf{TDD} & \textbf{T}est \textbf{D}riven \textbf{D}evelopment\\
+}
+
+%% ----------------------------------------------------------------
+% End of the pre-able, contents and lists of things
+% Begin the Dedication page
+
+\setstretch{1.3}  % Return the line spacing back to 1.3
+
+\pagestyle{empty}  % Page style needs to be empty for this page
+\dedicatory{For/Dedicated to/To my\ldots}
+
+\addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
+
+
+%% ----------------------------------------------------------------
+\mainmatter % Begin normal, numeric (1,2,3...) page numbering
+\pagestyle{fancy}  % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis, as separate files
+% Just uncomment the lines as you write the chapters
+
+\input{./Chapters/Chapter1} % Introduction
+
+\input{./Chapters/Chapter2} % Methods Used
+
+\input{./Chapters/Chapter3} % User testing
+
+\input{./Chapters/Chapter4} % Conclusions
+
+
+%% ----------------------------------------------------------------
+% Now begin the Appendices, including them as separate files
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+\input{./Appendices/AppendixA} % User's Manual
+
+\input{./Appendices/AppendixB} % Maintenance Manual
+
+\input{./Appendices/AppendixC} % Design Documents
+
+\input{./Appendices/AppendixD} % Source Code
+
+\input{./Appendices/AppendixE} % Test Suite
+
+\addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
+\backmatter
+
+%% ----------------------------------------------------------------
+\label{Bibliography}
+% Change the left side page header to "Bibliography"
+\lhead{\emph{Bibliography}}
+% Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliographystyle{unsrtnat}
+% The references (bibliography) information are stored in the file named
+% "Bibliography.bib"
+\bibliography{Bibliography}
+
+\end{document}  % The End
+%% ----------------------------------------------------------------

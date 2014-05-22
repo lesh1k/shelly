@@ -1,0 +1,90 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+% customize the look
+\mode<presentation>%{
+{
+  \usetheme{Warsaw}
+  \useinnertheme{circles}
+  \definecolor{foundationBlue}{rgb}{0.067,0.541,0.670}
+  \setbeamercolor{palette primary}{fg=white, bg=foundationBlue}
+  \setbeamercolor*{palette secondary}{fg=black,bg=black!25}
+  \setbeamercolor*{palette tertiary}{fg=black,bg=black!30}
+  \setbeamercolor*{palette quaternary}{fg=white,bg=black!80}
+  \setbeamercolor*{structure}{fg=black!80}
+  \beamertemplatenavigationsymbolsempty
+}
+%}
+\title{Discite}
+\subtitle{A peer-to-peer teaching network}
+\author{Dumitru Ursu}
+\institute{Technical University of Moldova}
+\date{\today}
+
+\begin{document}
+\frame {
+\titlepage
+}
+
+\frame {
+\section{Introduction}
+Discite(lat. "to learn") - is an interactive peer-to-peer teaching site, which
+simulates the direct instruction teaching model
+\\[10pt]
+The platform (http://discite.info/) allows:
+\begin{enumerate}
+  \item pick a teacher based on your interests
+  \item view rankings, add ratings
+  \item screen sharing
+  \item audio/video chat
+  \item presentations
+  \item doodling
+\end{enumerate}
+}
+
+
+\frame {
+\section{Methods Used}
+\begin{description}
+  \item[backend] Ruby on Rails Framework
+    \begin{itemize}
+  	  \item SQLite
+  	  \item puma
+  	  \item rspec
+  	  \item devise
+  	  \item sdoc
+    \end{itemize}
+  \item[video/audio] WebRTC
+  \item[UI] Zurb Foundation
+    \begin{itemize}
+      \item jQuery
+      \item foundation icons
+
+    \end{itemize}
+    viewer.js
+\end{description}
+}
+
+\frame {
+Rails is not really made for real time stuff\\
+the web is not really made for real time stuff
+}
+
+\frame {
+\section{Results}
+Site is up and running\\
+Registration\\
+Course creation
+}
+
+\frame {
+\frametitle{Limitations}
+WebRTC not supported in IE yet\\
+IE browser share = 9\% as of December 2013\\
+STUN and TURN servers needed for clients behind NAT networks
+}
+
+
+\end{document}
