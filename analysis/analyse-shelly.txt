@@ -15,7 +15,8 @@ IDEAS
 - make a list of repos. add 3rd party software install
 - word-distance based analysis. if input has "do I have Python", the answer could be "Python is not installed,
   however, there's python. Maybe that's what you were looking for"
-
+- search command can be optimized. Currently for beatiful output it calls "grep" 3 times, this
+  will inevitably lead to bad performance with large data
 
 Bells&whistles: 
     

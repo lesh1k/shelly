@@ -96,6 +96,95 @@ function shelly(){
         return
     fi
 
+    ###Search/find functions
+    if [[ ( ( "$1" = "search" ) && ( ( "$#" = "2" ) || ( "$#" = "3" ) && ( "$2" = "any" ) ) ) || ( ( "$1 $2" = "search for" || "$1 $2" = "look for" ) && ( ( "$#" = "3" ) || ( "$#" = "4" ) && ( "$3" = "any" ) ) ) ]]; then
+        if [[ ( "$#" = "3" ) && ( "$2" = "any" ) || ( "$#" = "4" ) && ( "$3" = "any" ) ]]; then
+            ep="i" #extra-options. i-for case insensitive search
+        else
+            ep=""
+        fi
+        
+        needle="${@: -1}"
+        echo -e "Using: ls -R | wc -l\ngrep -""$ep""Rc ""$needle"" * | grep -v :0\ngrep -""$ep""Rc ""$needle"" * | grep -v :0 | wc -l\ngrep -""$ep""oR ""$needle"" * | wc -l"
+        max_to_show="30"
+        echo "Searching '$needle' in $(ls -R | wc -l) files..."
+        result=$(grep -"$ep"Rc "$needle" * | grep -v :0)
+        results_count=$(grep -"$ep"Rc "$needle" * | grep -v :0 | wc -l)
+        total_occurrences=$(grep -"$ep"oR "$needle" * | wc -l)
+        echo -e "$total_occurrences matches found in $results_count files."
+        if (("$results_count" > "$max_to_show")); then
+            echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
+        else
+            echo -e "[ file:occurrences ]\n\n""$result"
+        fi
+
+        # find $(pwd) -name "*.rb" -exec grep -l "$2" {} \;
+        # find $(pwd) -name "*.rb"
+        return
+    fi
+
+
+
+
+############Needs edit
+    if [[ ( ( "$1" = "search" ) && ( ( "$#" = "6" ) || ( "$#" = "7" ) && ( "$2" = "any" ) ) ) || ( ( "$1 $2" = "search for" || "$1 $2" = "look for" ) && ( ( "$#" = "7" ) || ( "$#" = "8" ) && ( "$3" = "any" ) ) ) ]]; then
+        if [[ ( "$#" = "7" ) && ( "$2" = "any" ) || ( "$#" = "8" ) && ( "$3" = "any" ) ]]; then
+            ep="i" #extra-options. i-for case insensitive search
+        else
+            ep=""
+        fi
+
+        if [[ ( "$#" = "7" ) && ( "$2" = "any" ) ]]; then
+            needle="$3"
+            else if [[ ( "$#" = "8" ) && ( "$3" = "any" ) || ( "$#" = "7" ) && ( "$2" = "for" ) ]]; then
+                needle="$4"
+                else if [[ ( "$#" = "6" ) ]]; then
+                    needle="$2"
+                fi
+            fi
+        fi
+###################
+
+        if [[ "${@: -3}" = "all my files" ]]; then
+            path="$HOME/"
+            sudoer_call=""
+            else if [[ "${@: -2}" = "all files" ]]; then
+                path="/"
+                sudoer_call="sudo"
+            else
+                echo 'Sorry, I did not understand this one. Teach me, Master!'
+                return
+            fi
+        fi
+
+        echo -e "Using: ""$sudoer_call"" ls ""$path"" -R | wc -l\n""$sudoer_call"" grep -""$ep""Rc ""$needle"" ""$path"/*" | grep -v :0\n""$sudoer_call"" grep -""$ep""Rc ""$needle"" ""$path"/*" | grep -v :0 | wc -l\n""$sudoer_call""grep -""$ep""oR ""$needle"" ""$path"/*" | wc -l"
+        max_to_show="30"
+        echo "Searching '$needle' in $($sudoer_call ls "$path" -R | wc -l) files..."
+        result=$($sudoer_call grep -"$ep"Rc "$needle" "$path"* | grep -v :0)
+        results_count=$($sudoer_call grep -"$ep"Rc "$needle" "$path"* | grep -v :0 | wc -l)
+        total_occurrences=$($sudoer_call grep -"$ep"oR "$needle" "$path"* | wc -l)
+        echo -e "$total_occurrences matches found in $results_count files."
+        if (("$results_count" > "$max_to_show")); then
+            echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
+        else
+            echo -e "[ file:occurrences ]\n\n""$result"
+        fi
+
+        return
+    fi
+
+    # if [[[ "$1$2" = "search for" ] || [ "$1$2" = "look for" ]] && [ "$#" = "3" ]]; then
+    #     echo "Searching '$2' in $(ls -R | wc -l) files..."
+    #     result=$(grep -Rc "$2" * | grep -v :0)
+    #     results_count=$(grep -Rc "$2" * | grep -v :0 | wc -l)
+    #     total_occurrences=$(grep -oR "$2" * | wc -l)
+    #     echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\n"
+    #     echo "$result"
+    #     # find $(pwd) -name "*.rb" -exec grep -l "$2" {} \;
+    #     # find $(pwd) -name "*.rb"
+    #     return
+    # fi
+
     ############FUN##########################
     if [ "$query" = "whats the meaning of life" ] || [ "$query" = "why do we live" ]; then
         echo -e "IMHO, we live to eat, sleep, rave, repeat.\nNevertheless, the RIGHT answer is 42."

@@ -175,3 +175,14 @@ Besides implementing auto-complete functionality, for the ease of development a 
 way to load all new files at except for reloading the system
 ///////////////////////////////////////////////////
 
+
+%%%%  what "wc" command is, what is does? is it word count
+
+%%%%  find $(pwd) -name "*.rb" -exec grep -l "interest" {} \; WHYY?? explain
+
+%%%%  write about pagination, why "less -R" and not "pg"
+
+%%%%  write about math comparison. 2 approaches and the one chosen - why?
+
+%%%%  write how conditionals are "made" [[]], (()), [], condition
+

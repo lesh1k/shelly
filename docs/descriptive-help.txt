@@ -23,6 +23,10 @@ Shelly can answer the following:
     - which {program_name}
     - what {program_name} | what version is {program_name}
     - install/uninstall {program_name}
+    - search "string" | look for "string" | search for "string"
+    - search any "string" | look for any "string" | search for any "string"
+    - search [for] [any] "string" in all [my] files | look for [any] "string" in all [my] files
+    - 
 
 You can discuss with Shelly:
     - whats the meaning of life | why do we live
