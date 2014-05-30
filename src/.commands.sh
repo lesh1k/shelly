@@ -2,7 +2,8 @@ function shelly(){
     query=${@,,}
     length=$(($#-1))
     all_but_last=${@:1:$length}
-    username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
+    # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
+    username=$(whoami)
     shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
 
     if [ "${all_but_last,,}" == "do i have" ]; then
@@ -58,7 +59,8 @@ function shelly(){
     fi
 
     if [ "$query" = "whats my username" ] || [ "$query" = "who am i" ] || [ "$query" = "whoami" ] || [ "$query" = "username" ] || [ "$query" = "tellme my username" ] || [ "$query" = "tell me my username" ]; then
-        echo "Using: getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1"
+        # echo "Using: getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1"
+        echo "Using: whoami"
         echo "You are: $username"
         return
     fi
@@ -287,5 +289,27 @@ function please(){
     else
         echo 'Sorry, I did not understand this one. Teach me, Master!'
     fi
+    return
+}
+
+function minValue3(){
+    let min=$(($1<$2?$1:$2))
+    min=$(($min<$3?$min:$3))
+    echo "$min"
+}
+
+function levenshteinDistance(){
+    s1="$1"
+    s2="$2"
+    if [[ "${#s1}" = "0" ]]; then
+        echo ${#s2}
+        return
+    fi
+    if [[ "${#s2}" = "0" ]]; then
+        echo ${#s1}
+        return
+    fi
+
+    echo $(minValue3 $(($(levenshteinDistance ${s1:1} $s2)+1)) $(($(levenshteinDistance ${s2:1} $s1)+1)) $(($(levenshteinDistance ${s2:1} ${s1:1})+$((${s1:0:1}!=${s2:0:1}?1:0)))))
     return
 }

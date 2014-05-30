@@ -1,8 +1,16 @@
 - x) Introduction (1 page)
+    - overview of personal assistants (siri, now, cortana, clippy)
+    - fragmentation DE
+    - the state of unix command line (fragmentation of soft, packages, functions, distros)
+    - the viability of unix cli personal assistants
+    - the importance of emotional ...
+    - the integration within hacker community ()
+
 - 1) Domain and problem analysis 
     - Available solutions
-    - Motivation
+    - Motivation. why start shelly when bety exists
     - Why Shelly is better
+    - extensibility. plugin architecture
     - First iteration milestones/goals
 - 2) System architecture
     - src structure, "components"

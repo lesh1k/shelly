@@ -1,0 +1,12 @@
+SOURCE: http://superuser.com/questions/398670/when-would-you-use-apt-get-remove-over-apt-get-autoremove
+-------------------------------------------------------------------------------------------------------4
+
+It depends on how much you trust the dependancy tracker. While almost always correct, there are times when you would want a dependancy to remain, particularly when you are a developer or power user installing software that is not in the repository.
+
+If you always install software through apt-get, without exception, and trust all the dependancies to be correct (which they usually are), then you can use apt-get autoremove and gain a small amount of drive space and a reduced exposure to potential security holes by having it remove packages that no longer have any packages that need them.
+
+But if you install software manually, or develop software, or do not want to deal with a possible dependancy error, then not using autoremove to clear potentially unused packages is probably the safer choice. Regardless of whether you use apt-get autoremove every now and then or not, you will always remove software using apt-get remove Package
+
+For example, if I install AwesomePackage, it may depend on AwesomeLibrary, and thus AwesomeLibrary will get automatically installed as a dependancy. When I remove AwesomePackage using autoremove, as long as no other package has AwesomeLibrary as a dependancy it will be uninstalled as well. But if SuperPackage also requires AwesomeLibrary, or if I had installed AwesomeLibrary explicitly myself rather than having it come in automatically as a dependancy (apt-get install AwesomeLibrary), then autoremove would not get rid of it.
+
+The reason it is not the default is that having AwesomeLibrary on the system, unused, is a very minor issue. It will almost never cause problems, and most dependancies don't take up much space. There are exceptions, but the times when removing a dependancy will cause problems outnumber the times when it will solve or prevent a problem.

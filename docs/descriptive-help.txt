@@ -26,6 +26,7 @@ Shelly can answer the following:
     - search "string" | look for "string" | search for "string"
     - search any "string" | look for any "string" | search for any "string"
     - search [for] [any] "string" in all [my] files | look for [any] "string" in all [my] files
+    - levenshteinDistance "string1" "string2"  (!!! this one works without "shelly" prefix) #it's slow, really slow, cause it's recursive
     - 
 
 You can discuss with Shelly:
