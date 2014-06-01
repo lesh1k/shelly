@@ -18,7 +18,7 @@ hash git >/dev/null 2>&1 && /usr/bin/env git clone https://github.com/lexxxas/sh
 echo -e "\033[0;34mSetting up...\033[0m"
 echo -e "\033[0;34mPreparing aliases.\033[0m"
 if [ -f ~/.bashrc ]; then
-    echo "$(cat "$SHELLY"/bashrc-addition.sh)" >> ~/.bashrc
+    echo "$(cat $SHELLY/bashrc-addition.sh)" >> ~/.bashrc
 else 
     echo "Could not find ~/.bashrc"
     exit
