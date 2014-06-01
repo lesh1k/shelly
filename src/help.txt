@@ -201,7 +201,7 @@ Shelly can answer the following:
           13. lets work 
           14. f*** you
               bitch | you are a bitch
-          15. fuck off
+          15. f*** off
               exit
               i'm tired of you
               im tired of you
@@ -215,4 +215,4 @@ Shelly can answer the following:
               you ok
               are you fine
               ** Knowledge base to make interacting with Shelly fun, emotional, 
-              and simulate basic AI. [in development]
+              and simulate basic AI. [work in progress]
