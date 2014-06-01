@@ -29,6 +29,26 @@ Shelly can answer the following:
              tell me my username
              username
              ** Print username
+
+          4. what package manager
+             what package manager do i have
+             what package manager do i use
+             ** Determine installed/used package manager
+
+          5. time
+             what time is it
+             ** Tells the time in format: HH:MM:SS (e.g. 21:59:59)
+
+          6. date
+             what date is it
+             ** Tells the date in format: Sunday, 01-January-1999
+
+          7. day
+             what day is it
+             ** Tells the day of the week in format: Sunday
+
+          8. open
+             ** Suggestions about opening a file
     
     - SYSTEM
            1. hows my disk space
@@ -130,6 +150,14 @@ Shelly can answer the following:
               ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
               current folder or its subfolders, considers only files
               with name containing {name_string}. CASE-INsensitive
+
+          15. search {string} in {path}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              {path} INCLUDING subfolders.
+
+          16. search any {string} in {path}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              {path} INCLUDING subfolders. CASE-INsensitive
     
     - OTHER
            1.levenshteinDistance "string1" "string2"  (!!! this one works without "shelly" prefix)
@@ -156,5 +184,20 @@ Shelly can answer the following:
           11. you are grumpy
           12. do you understand how i feel
           13. lets work 
+          14. f*** you
+              bitch | you are a bitch
+          15. fuck off
+              exit
+              i'm tired of you
+              im tired of you
+              quit
+          16. hello
+              hi
+              privet
+              greetings
+          17. how are you
+              are you ok
+              you ok
+              are you fine
               ** Knowledge base to make interacting with Shelly fun, emotional, 
               and simulate basic AI. [in development]

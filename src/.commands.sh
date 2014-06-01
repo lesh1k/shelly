@@ -1,10 +1,10 @@
 function shelly(){
-    query=${@,,}
-    length=$(($#-1))
-    all_but_last=${@:1:$length}
+    local query=${@,,}
+    local length=$(($#-1))
+    local all_but_last=${@:1:$length}
     # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
-    username=$(whoami)
-    shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
+    local username=$(whoami)
+    local shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
 
     if [ "${all_but_last,,}" == "do i have" ]; then
         echo -e 'Using: command -v ${@: -1} 2>/dev/null 1>/dev/null && { echo >&1 "Yes. You can launch it using '"$(command -v ${@: -1})"' OR you can try '"${@: -1}"'"; } || { echo >&2 "It seems that - ${@: -1} - is not installed."; }'
@@ -66,13 +66,13 @@ function shelly(){
     fi
 
     if [ "$all_but_last" = "what" ] || [ "$all_but_last" = "what version is" ]; then
-        app_location=$(command -v "${@: -1}")
+        local app_location=$(command -v "${@: -1}")
         if [ -n "$app_location" ]; then
             echo "Using: command -v '${@: -1}'"
             echo "dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //'"
             echo "dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //'"
-            version=$(dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //')
-            architecture=$(dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //')
+            local version=$(dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //')
+            local architecture=$(dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //')
             echo "Your version of ${@: -1} is: $version. Architecture: $architecture."
         else
             echo -e "It seems that ${@: -1} is not installed.\nI might install it if I find the right repository. Just ask "
@@ -100,22 +100,22 @@ function shelly(){
 
     if  [ "$query" = "disk space" ] \
      || [ "$query" = "hows my disk space" ]; then
-        space=`df -h 2>/dev/null | awk '{print $5}' | grep % | grep -v Use | sort -n | tail -1 | cut -d "%" -f1 -`
+        local space=`df -h 2>/dev/null | awk '{print $5}' | grep % | grep -v Use | sort -n | tail -1 | cut -d "%" -f1 -`
         case $space in
         [1-6]*)
-          Message="All is quiet."
+          local Message="All is quiet."
           ;;
         [7-8]*)
-          Message="Start thinking about cleaning out some stuff.  There's a partition that is $space % full."
+          local Message="Start thinking about cleaning out some stuff.  There's a partition that is $space % full."
           ;;
         9[1-8])
-          Message="Better hurry with that new disk...  One partition is $space % full."
+          local Message="Better hurry with that new disk...  One partition is $space % full."
           ;;
         99)
-          Message="I'm drowning here!  There's a partition at $space %!"
+          local Message="I'm drowning here!  There's a partition at $space %!"
           ;;
         *)
-          Message="I seem to be running with some nonexistent amount of disk space..."
+          local Message="I seem to be running with some nonexistent amount of disk space..."
           ;;
         esac
 
@@ -155,6 +155,14 @@ function shelly(){
             [2-3])
                 #this is the base case
                 ;;
+            4)
+                if [ -d "${@: -1}" ]; then
+                    local path="${@: -1}"
+                else
+                    echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                    return
+                fi
+                ;;
             [5-6])
                 case "${@: -2}" in
                     "this folder"|"this directory")
@@ -169,9 +177,14 @@ function shelly(){
                         echo "CAREFUL! Searching within home directory might take some time..."
                         local path="$HOME"
                         ;;
-                    ?)
-                        echo 'Sorry, I did not understand this one. Teach me, Master!' 
-                        return
+                    *)
+                        echo hello
+                        if [ -d "${@: -1}" ]; then
+                            local path="${@: -1}"
+                        else
+                            echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                            return
+                        fi
                         ;;
                 esac
                 ;;
@@ -189,7 +202,7 @@ function shelly(){
                         local filter=" --include \*${@: -1}\*"
                         local eval_cmd="eval "
                         ;;
-                    ?)
+                    *)
                         echo 'Sorry, I did not understand this one. Teach me, Master!' 
                         return
                         ;;
@@ -207,12 +220,12 @@ function shelly(){
                 echo 14
                 return
                 ;;
-            ?)
+            *)
                 echo 'Sorry, I did not understand this one. Teach me, Master!' 
                 return
             ;;
         esac
-        echo $sudoer_call grep$ep$include_subfolders -c$filter "$needle" "$path"
+
         # echo -e "Using: ls -R | wc -l\ngrep -""$ep""Rc ""$needle"" * | grep -v :0\ngrep -""$ep""Rc ""$needle"" * | grep -v :0 | wc -l\ngrep -""$ep""oR ""$needle"" * | wc -l"
         echo "Searching '$needle' in $($sudoer_call ls$include_subfolders "$path" | wc -l) file(s)..."
         local data=$($eval_cmd$sudoer_call grep$ep$include_subfolders -c$filter "$needle" "$path")
@@ -230,18 +243,54 @@ function shelly(){
             echo -e "$total_occurrences matches found."
         fi
 
-        # find $(pwd) -name "*.rb" -exec grep -l "$2" {} \;
-        # find $(pwd) -name "*.rb"
+        return
+    fi
+
+    ##########EOF find/search
+
+    if [ "$query" = "what package manager" ]\
+        || [ "$query" = "what package manager do i have" ]\
+        || [ "$query" = "what package manager do i use" ]; then
+        _PMANAGER_DETERMINE
+        echo -e "Your package manager is $_PMANAGER"
+        return
+    fi
+
+    if [ "$query" = "time" ]\
+        || [ "$query" = "what time is it" ]; then
+        echo "It is $(date +"%T")"
+        return
+    fi
+
+    if [ "$query" = "date" ]\
+        || [ "$query" = "what date is it" ]; then
+        echo "It is $(date +"%A, %d-%B-%Y")"
+        return
+    fi
+
+    if [ "$query" = "day" ]\
+        || [ "$query" = "what day is it" ]; then
+        echo "It is $(date +"%A")"
+        return
+    fi
+
+    if [ "$1" = "open" ] && [ $# > 1 ]; then
+        echo "I am not sure about opening the file myself. However, you can try"
+        echo "using vi or nano (e.g. nano FILE or vi FILE) for text files."
         return
     fi
 
     ############FUN##########################
-    if [ "$query" = "whats the meaning of life" ] || [ "$query" = "why do we live" ]; then
+    if [ "$query" = "whats the meaning of life" ] \
+        || [ "$query" = "why do we live" ]; then
+
         echo -e "IMHO, we live to eat, sleep, rave, repeat.\nNevertheless, the RIGHT answer is 42."
         return
     fi
 
-    if [ "$query" = "do you love me" ] || [ "$query" = "i love you" ]; then
+    if [ "$query" = "do you love me" ]\
+        || [ "$query" = "i love you" ]; then
+
         echo -e "You are my only and dearest person, $username. My fans go crazy the moment you touch the keyboard."
         if [ "$query" = "i love you" ]; then
             echo -e "I love you too!"
@@ -257,13 +306,59 @@ function shelly(){
         return
     fi
 
-    if [ "$query" = "laugh with me" ] || [ "$query" = "its a joke" ] || [ "$query" = "can you laugh" ] || [ "$query" = "it was a joke" ] || [ "$query" = "laugh out loud" ]; then
+    if [ "$query" = "laugh with me" ] \
+        || [ "$query" = "its a joke" ] \
+        || [ "$query" = "can you laugh" ] \
+        || [ "$query" = "it was a joke" ] \
+        || [ "$query" = "laugh out loud" ]; then
+
         if [ -f "$shelly_root_path/art/lol" ]; then
             cat $shelly_root_path/art/$filename
             echo -e "\n"
         else
             echo "No!"
         fi
+        return
+    fi
+
+    if [ "$query" = "fuck you" ]\
+        || [ "$query" = "bitch" ]\
+        || [ "$query" = "you are a bitch" ]; then
+
+        echo "I knew you are dumb, asshole"
+        return
+    fi
+
+    if [ "$query" = "fuck off" ]\
+        || [ "$query" = "exit" ]\
+        || [ "$query" = "i'm tired of you" ]\
+        || [ "$query" = "im tired of you" ]\
+        || [ "$query" = "quit" ]; then
+
+        exit
+        return
+    fi
+
+    if [ "$query" = "hello" ]\
+        || [ "$query" = "hi" ]\
+        || [ "$query" = "privet" ]\
+        || [ "$query" = "greetings" ]; then
+        local greetings=("Hello" "Hi" "Nice to see you" "Greetings" "Good time of day")
+        local endings=(", $username!" "!" ":)" ")" ":P" ":*" ", $username :P" ", $username :*")
+        local selected_greeting=${greetings[$RANDOM % ${#greetings[@]} ]}
+        local selected_ending=${endings[$RANDOM % ${#endings[@]} ]}
+        echo "$selected_greeting$selected_ending"
+        return
+    fi
+
+    if [ "$query" = "how are you" ]\
+        || [ "$query" = "are you ok" ]\
+        || [ "$query" = "you ok" ]\
+        || [ "$query" = "are you fine" ]; then
+        local feelings=("Great =)" "Awesome!" "A bit sad :(" "Confused :/" "Ehhm... Just don't bother me!" "Excited, to be with you"\
+            "Perfect :)" "Ready for action" "Surprised O_O" "Cool B-)" "I'm about to cry ;(")
+        local selected_feeling=${feelings[$RANDOM % ${#feelings[@]} ]}
+        echo "$selected_feeling"
         return
     fi
 
@@ -281,35 +376,6 @@ function shelly(){
    return
 }
 
-function tellme(){
-    query=${@,,}
-
-    if [ "$query" = "about os" ] || [ "$query" = "about my os" ] || [ "$query" = "about my system" ]; then
-        echo -e 'Using: cat /etc/os-release\n'
-        cat /etc/os-release
-        return
-    fi
-    
-    if [ "$query" = "about my hardware platform" ] || [ "$query" = "about my arch" ]; then
-        echo -e 'Using: uname -i\n'
-        hp=$(uname -i)
-        if [ $hp = "x86_64" ]; then
-            echo -e "Your system is 64 bit (x86_64)"
-        else
-            echo -e "Your system is 32 bit (x86)"
-        fi
-        return
-    fi
-    if [ "$query" = "about my package manager" ]; then
-        _PMANAGER_DETERMINE
-        echo -e "Your package manager is $_PMANAGER"
-        return
-    else
-        echo 'Sorry, I did not understand this one. Teach me, Master!'
-    fi
-    return
-}
-
 function _PMANAGER_DETERMINE(){
     _PMANAGER="UNDEFINED"
     #Determine package manager
@@ -322,22 +388,6 @@ function _PMANAGER_DETERMINE(){
     if [ -f /usr/bin/zypper ]; then
         _PMANAGER="ZYPPER"
     fi
-}
-
-function please(){
-    query=${@,,}
-    _PMANAGER_DETERMINE
-
-    if [ "$query" = "do full update" ]; then
-        if [ "$_PMANAGER" = "APT" ]; then
-            sudo apt-get update
-            sudo apt-get upgrade
-            sudo apt-get dist-upgrade
-        fi
-    else
-        echo 'Sorry, I did not understand this one. Teach me, Master!'
-    fi
-    return
 }
 
 function minValue3(){
@@ -359,10 +409,5 @@ function levenshteinDistance(){
     fi
 
     echo $(minValue3 $(($(levenshteinDistance ${s1:1} $s2)+1)) $(($(levenshteinDistance ${s2:1} $s1)+1)) $(($(levenshteinDistance ${s2:1} ${s1:1})+$((${s1:0:1}!=${s2:0:1}?1:0)))))
-    return
-}
-
-function zzz(){
-    
     return
 }

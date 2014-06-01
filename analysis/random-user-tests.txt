@@ -1,18 +1,17 @@
  2048  shelly hello
- 2049  help me
- 2050  shelly elp
- 2051  shelly help
- 2052  shelly FUCK YOU!
- 2053  shelly exit
- 2054  shelly quit
- 2055  shelly time
- 2056  shelly lol
- 2057  shelly give me a hug
- 2058  shelly search utm
+ {# 2049  help me #}
+ {# 2051  shelly help #}
+ {# 2052  shelly FUCK YOU! #}
+ {# 2053  shelly exit #}
+ {# 2054  shelly quit #}
+ {# 2055  shelly time #}
+ {# 2056  shelly lol #}
+ {# 2057  shelly give me a hug #}
+ {# 2058  shelly search utm #}
  2059  shelly open txt/bla-bla.txt
- 2001  sweetie will you marry me
- 2002  sweetie do you love me?
- 2003  sweetie do you love me
- 2004  sweetie I love me
- 2005  sweetie i love me
- 2006  sweetie i love you
+ {# 2001  sweetie will you marry me #}
+ {# 2002  sweetie do you love me? #}
+ {# 2003  sweetie do you love me #}
+ {# 2004  sweetie I love me #}
+ {# 2005  sweetie i love me #}
+ {# 2006  sweetie i love you #}
