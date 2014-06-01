@@ -98,94 +98,142 @@ function shelly(){
         return
     fi
 
-    ###Search/find functions
-    if [[ ( ( "$1" = "search" ) && ( ( "$#" = "2" ) || ( "$#" = "3" ) && ( "$2" = "any" ) ) ) || ( ( "$1 $2" = "search for" || "$1 $2" = "look for" ) && ( ( "$#" = "3" ) || ( "$#" = "4" ) && ( "$3" = "any" ) ) ) ]]; then
-        if [[ ( "$#" = "3" ) && ( "$2" = "any" ) || ( "$#" = "4" ) && ( "$3" = "any" ) ]]; then
-            ep="i" #extra-options. i-for case insensitive search
+    if  [ "$query" = "disk space" ] \
+     || [ "$query" = "hows my disk space" ]; then
+        space=`df -h 2>/dev/null | awk '{print $5}' | grep % | grep -v Use | sort -n | tail -1 | cut -d "%" -f1 -`
+        case $space in
+        [1-6]*)
+          Message="All is quiet."
+          ;;
+        [7-8]*)
+          Message="Start thinking about cleaning out some stuff.  There's a partition that is $space % full."
+          ;;
+        9[1-8])
+          Message="Better hurry with that new disk...  One partition is $space % full."
+          ;;
+        99)
+          Message="I'm drowning here!  There's a partition at $space %!"
+          ;;
+        *)
+          Message="I seem to be running with some nonexistent amount of disk space..."
+          ;;
+        esac
+
+        echo $Message
+        return
+    fi
+
+    if  [ "$query" = "what do you know" ] \
+     || [ "$query" = "help" ] \
+     || [ "$query" = "help me" ]; then
+        if [ -f "$shelly_root_path/src/help.txt" ]; then
+            echo -e "$(cat $shelly_root_path/src/help.txt)""\n\nPress 'q' to exit..." | less -R
         else
-            ep=""
+            echo "Help file not found"
+        fi
+        return
+    fi
+
+    ###Search/find functions
+    if [ "$1" = "search" ] && [ $# > 2 ]; then
+        
+        local max_to_show=$(($LINES-4)) #max results to show without paging
+        local path=$(pwd)
+        local include_subfolders=" -R"
+        local sudoer_call=""
+        local filter=""
+        local eval_cmd=""
+        if [ "$2" = "any" ]; then
+            local ep=" -i" #extra-options. i-for case insensitive search
+            local needle="$3"
+        else
+            local ep=""
+            local needle="$2"
         fi
         
-        needle="${@: -1}"
-        echo -e "Using: ls -R | wc -l\ngrep -""$ep""Rc ""$needle"" * | grep -v :0\ngrep -""$ep""Rc ""$needle"" * | grep -v :0 | wc -l\ngrep -""$ep""oR ""$needle"" * | wc -l"
-        max_to_show="30"
-        echo "Searching '$needle' in $(ls -R | wc -l) files..."
-        result=$(grep -"$ep"Rc "$needle" * | grep -v :0)
-        results_count=$(grep -"$ep"Rc "$needle" * | grep -v :0 | wc -l)
-        total_occurrences=$(grep -"$ep"oR "$needle" * | wc -l)
-        echo -e "$total_occurrences matches found in $results_count files."
-        if (("$results_count" > "$max_to_show")); then
-            echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
+        case $# in
+            [2-3])
+                #this is the base case
+                ;;
+            [5-6])
+                case "${@: -2}" in
+                    "this folder"|"this directory")
+                        local include_subfolders=""
+                        ;;
+                    "all files")
+                        echo "WARNING! Searching within all files will take some time..."
+                        local sudoer_call="sudo"
+                        local path="/"
+                        ;;
+                    "my files")
+                        echo "CAREFUL! Searching within home directory might take some time..."
+                        local path="$HOME"
+                        ;;
+                    ?)
+                        echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                        return
+                        ;;
+                esac
+                ;;
+            [7-8])
+                case "${@: -3: 2}" in
+                    "ending with")
+                        local filter=" --include \*${@: -1}"
+                        local eval_cmd="eval "
+                        ;;
+                    "starting with")
+                        local filter=" --include ${@: -1}\*"
+                        local eval_cmd="eval "
+                        ;;
+                    "that contain")
+                        local filter=" --include \*${@: -1}\*"
+                        local eval_cmd="eval "
+                        ;;
+                    ?)
+                        echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                        return
+                        ;;
+                esac
+                ;;
+            12)
+                echo 12
+                return
+                ;;
+            13)
+                echo 13
+                return
+                ;;
+            14)
+                echo 14
+                return
+                ;;
+            ?)
+                echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                return
+            ;;
+        esac
+        echo $sudoer_call grep$ep$include_subfolders -c$filter "$needle" "$path"
+        # echo -e "Using: ls -R | wc -l\ngrep -""$ep""Rc ""$needle"" * | grep -v :0\ngrep -""$ep""Rc ""$needle"" * | grep -v :0 | wc -l\ngrep -""$ep""oR ""$needle"" * | wc -l"
+        echo "Searching '$needle' in $($sudoer_call ls$include_subfolders "$path" | wc -l) file(s)..."
+        local data=$($eval_cmd$sudoer_call grep$ep$include_subfolders -c$filter "$needle" "$path")
+        local result=$(echo "$data" | grep -v :0)
+        local results_count=$(echo "$result" | grep -e '^$' -v | wc -l)
+        local total_occurrences=$($eval_cmd$sudoer_call grep$ep$include_subfolders -o$filter "$needle" "$path" | wc -l) ##can be optimized. to eliminate redundant search
+        if (($total_occurrences > 0)); then
+            echo -e "$total_occurrences match(es) found in $results_count file(s)."
+            if (($results_count > $max_to_show)); then
+                echo -e "$total_occurrences matches found in $results_count files  [ filename:occurrences ]:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
+            else
+                echo -e "[ filename:occurrences ]\n\n""$result"
+            fi
         else
-            echo -e "[ file:occurrences ]\n\n""$result"
+            echo -e "$total_occurrences matches found."
         fi
 
         # find $(pwd) -name "*.rb" -exec grep -l "$2" {} \;
         # find $(pwd) -name "*.rb"
         return
     fi
-
-
-
-
-############Needs edit
-    if [[ ( ( "$1" = "search" ) && ( ( "$#" = "6" ) || ( "$#" = "7" ) && ( "$2" = "any" ) ) ) || ( ( "$1 $2" = "search for" || "$1 $2" = "look for" ) && ( ( "$#" = "7" ) || ( "$#" = "8" ) && ( "$3" = "any" ) ) ) ]]; then
-        if [[ ( "$#" = "7" ) && ( "$2" = "any" ) || ( "$#" = "8" ) && ( "$3" = "any" ) ]]; then
-            ep="i" #extra-options. i-for case insensitive search
-        else
-            ep=""
-        fi
-
-        if [[ ( "$#" = "7" ) && ( "$2" = "any" ) ]]; then
-            needle="$3"
-            else if [[ ( "$#" = "8" ) && ( "$3" = "any" ) || ( "$#" = "7" ) && ( "$2" = "for" ) ]]; then
-                needle="$4"
-                else if [[ ( "$#" = "6" ) ]]; then
-                    needle="$2"
-                fi
-            fi
-        fi
-###################
-
-        if [[ "${@: -3}" = "all my files" ]]; then
-            path="$HOME/"
-            sudoer_call=""
-            else if [[ "${@: -2}" = "all files" ]]; then
-                path="/"
-                sudoer_call="sudo"
-            else
-                echo 'Sorry, I did not understand this one. Teach me, Master!'
-                return
-            fi
-        fi
-
-        echo -e "Using: ""$sudoer_call"" ls ""$path"" -R | wc -l\n""$sudoer_call"" grep -""$ep""Rc ""$needle"" ""$path"/*" | grep -v :0\n""$sudoer_call"" grep -""$ep""Rc ""$needle"" ""$path"/*" | grep -v :0 | wc -l\n""$sudoer_call""grep -""$ep""oR ""$needle"" ""$path"/*" | wc -l"
-        max_to_show="30"
-        echo "Searching '$needle' in $($sudoer_call ls "$path" -R | wc -l) files..."
-        result=$($sudoer_call grep -"$ep"Rc "$needle" "$path"* | grep -v :0)
-        results_count=$($sudoer_call grep -"$ep"Rc "$needle" "$path"* | grep -v :0 | wc -l)
-        total_occurrences=$($sudoer_call grep -"$ep"oR "$needle" "$path"* | wc -l)
-        echo -e "$total_occurrences matches found in $results_count files."
-        if (("$results_count" > "$max_to_show")); then
-            echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
-        else
-            echo -e "[ file:occurrences ]\n\n""$result"
-        fi
-
-        return
-    fi
-
-    # if [[[ "$1$2" = "search for" ] || [ "$1$2" = "look for" ]] && [ "$#" = "3" ]]; then
-    #     echo "Searching '$2' in $(ls -R | wc -l) files..."
-    #     result=$(grep -Rc "$2" * | grep -v :0)
-    #     results_count=$(grep -Rc "$2" * | grep -v :0 | wc -l)
-    #     total_occurrences=$(grep -oR "$2" * | wc -l)
-    #     echo -e "$total_occurrences matches found in $results_count files  [ file:occurrences ]:\n"
-    #     echo "$result"
-    #     # find $(pwd) -name "*.rb" -exec grep -l "$2" {} \;
-    #     # find $(pwd) -name "*.rb"
-    #     return
-    # fi
 
     ############FUN##########################
     if [ "$query" = "whats the meaning of life" ] || [ "$query" = "why do we live" ]; then
@@ -311,5 +359,10 @@ function levenshteinDistance(){
     fi
 
     echo $(minValue3 $(($(levenshteinDistance ${s1:1} $s2)+1)) $(($(levenshteinDistance ${s2:1} $s1)+1)) $(($(levenshteinDistance ${s2:1} ${s1:1})+$((${s1:0:1}!=${s2:0:1}?1:0)))))
+    return
+}
+
+function zzz(){
+    
     return
 }
