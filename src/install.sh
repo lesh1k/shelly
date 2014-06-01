@@ -42,8 +42,5 @@ fi
 # fi
 
 echo "\033[0;34mAliases first load.\033[0m"
-if [ -z "$SHELLY" ]; then
-  SHELLY=~/.shelly
-fi
 . ~/.bashrc
 echo "\033[0;34mDone!\033[0m"
