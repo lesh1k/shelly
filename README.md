@@ -1,9 +1,9 @@
-Shelly/SIUNL/human.sh/Shell Interaction Using Natural Language
-====================================================================
+Shelly/SIUNL/human.sh | Shell Interaction Using Natural Language | v 0.1
+========================================================================
 
 Idea: Andrei Lisnic - human.sh (https://github.com/alisnic/human.sh)
 
-====================================================================
+========================================================================
 
 Requirements: bash
 
