@@ -16,75 +16,145 @@ Shelly can be asked using:
 Shelly can answer the following:
     
     - INFO
-        do I have {program_name}
-        whats my system
-        whats my username
-        who am i
-        whoami
-        tellme my username
-        tell me my username
-        username
+          1. do I have {program_name}
+             ** Tells if {program_name} is installed
+          
+          2. whats my system
+             ** Prints general info about the system
+          
+          3. whats my username
+             who am i
+             whoami
+             tellme my username
+             tell me my username
+             username
+             ** Print username
     
     - SYSTEM
-        hows my disk space
-        disk space
-        update system
-        update os
-        update distro
-        update distribution
-        update os and apps
-        update all
-        update system and apps
-        update apps and os
-        which {program_name}
-        what {program_name}
-        what version is {program_name}
-        install/uninstall {program_name}
-        update apps
-        update applications
+           1. hows my disk space
+              disk space
+              ** Tells how much disk space is used (in percent). Considers mounted partitions only
+           
+           2. update system
+              update os
+              update distro
+              update distribution
+              ** Update distribution
+           
+           3. update os and apps
+              update all
+              update system and apps
+              update apps and os
+              ** Update all installed applications and distribution. Full system update
+           
+           4. which {program_name}
+              ** Prints location of a command. i.e. Path to command
+           
+           5. what {program_name}
+              what version is {program_name}
+              ** Output the version of {program_name}, if installed
+           
+           6. install/uninstall {program_name}
+              ** Install {program_name}, if the package is in the repositories
+
+           7. update apps
+              update applications
+              ** Update installed applications
     
     - HELP
-        shelly help
-        shelly what do you know
+           1. shelly help
+              shelly what do you know
+              ** Show help. i.e. Display this file.
     
     - SEARCH FUNCTIONS
-        search {string}
-        search any {string}
-        search {string} in my files
-        search {string} in all files
-        search {string} in this directory
-        search {string} in this folder
-        search any {string} in my files
-        search any {string} in all files
-        search any {string} in this directory
-        search any {string} in this folder
-        search {string} in files ending with .rb
-        search {string} in files starting with .rb
-        search {string} in files that contain {string} 
-        search any {string} in files ending with .rb
-        search any {string} in files starting with .rb
-        search {string} in files that contain {string} 
+           1. search {string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders
+
+           2. search any {string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders. CASE-INsensitive
+
+           3. search {string} in my files
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              user's home folder
+
+           4. search {string} in all files
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              all files. Search in "/"
+
+           5. search {string} in this directory
+              search {string} in this folder
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder EXCLUDING subfolders
+
+           6. search any {string} in my files
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              user's home folder. CASE-INsensitive
+
+           7. search any {string} in all files
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              all files. Search in "/". CASE-INsensitive
+
+           8. search any {string} in this directory
+              search any {string} in this folder
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder EXCLUDING subfolders. CASE-INsensitive
+
+           9. search {string} in files ending with {end_string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              ending in {end_string}.
+          
+          10. search {string} in files starting with {start_string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              starting in {start_string}.
+          
+          11. search {string} in files that contain {name_string} 
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              with name containing {name_string}
+          
+          12. search any {string} in files ending with {end_string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              ending in {end_string}. CASE-INsensitive
+          
+          13. search any {string} in files starting with {start_string}
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              starting in {start_string}. CASE-INsensitive
+          
+          14. search any {string} in files that contain {name_string} 
+              ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
+              current folder or its subfolders, considers only files
+              with name containing {name_string}. CASE-INsensitive
     
     - OTHER
-        levenshteinDistance "string1" "string2"  (!!! this one works without "shelly" prefix) #it's slow, really slow, cause it's recursive
+           1.levenshteinDistance "string1" "string2"  (!!! this one works without "shelly" prefix)
+            ** Computes Levenshtein's distance. 
+           BUGs: very slow (recursive implementation); There are test cases that are not handled correctly
 
     - EMOTIONAL/FUN
-        whats the meaning of life
-        why do we live
-        do you love me
-        i love you
-        will you marry me
-        laugh with me
-        its a joke
-        it was a joke
-        laugh out loud
-        lol
-        give me a hug
-        not bad
-        rage
-        me gusta
-        you dont say
-        can you read
-        you are grumpy
-        do you understand how i feel
-        lets work 
+           1. whats the meaning of life
+              why do we live
+           2. do you love me
+              i love you
+           3. will you marry me
+           4. laugh with me
+              its a joke
+              it was a joke
+              laugh out loud
+              lol
+           5. give me a hug
+           6. not bad
+           7. rage
+           8. me gusta
+           9. you dont say
+          10. can you read
+          11. you are grumpy
+          12. do you understand how i feel
+          13. lets work 
+              ** Knowledge base to make interacting with Shelly fun, emotional, 
+              and simulate basic AI. [in development]

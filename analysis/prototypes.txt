@@ -18,7 +18,7 @@
 
 {# 8         search any {string} in files ending with .rb #}
 {# 8         search any {string} in files starting with .rb #}
-{# 8         search {string} in files that contain {string}  #}
+{# 8         search any {string} in files that contain {string}  #}
 
 12        search {string} in files that contain {string} and are starting with rb
 12        search {string} in files that contain {string} and are ending with .rb
