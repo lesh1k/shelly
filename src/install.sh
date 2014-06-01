@@ -24,22 +24,22 @@ else
     exit
 fi
 
-echo "\033[0;34mPreparing auto-completion.\033[0m"
-if [ -d /etc/bash_completion.d/ ]; then
-    sudo cp -r $SHELLY/src/auto-complete/. /etc/bash_completion.d/
+# echo "\033[0;34mPreparing auto-completion.\033[0m"
+# if [ -d /etc/bash_completion.d/ ]; then
+#     sudo cp -r $SHELLY/src/auto-complete/. /etc/bash_completion.d/
 
-    echo "Loading newly added auto-completion files..."
-    #Load/source new completion files
-    FILES=auto-complete/*
-    FILES=$(echo "$SHELLY/src/$FILES")
-    for f in $FILES
-    do
-        . /etc/bash_completion.d/${f##*/}
-    done
-else
-    echo "Could not find /etc/bash_completion.d/"
-    echo "Auto-complete setup failed!"
-fi
+#     echo "Loading newly added auto-completion files..."
+#     #Load/source new completion files
+#     FILES=auto-complete/*
+#     FILES=$(echo "$SHELLY/src/$FILES")
+#     for f in $FILES
+#     do
+#         . /etc/bash_completion.d/${f##*/}
+#     done
+# else
+#     echo "Could not find /etc/bash_completion.d/"
+#     echo "Auto-complete setup failed!"
+# fi
 
 echo "\033[0;34mAliases first load.\033[0m"
 if [ -z "$SHELLY" ]; then
