@@ -1,3 +1,5 @@
+
+
 #####SIUNL/Shelly/human.sh############
 if [ -f ~/utm/Diploma/src/.aliases.sh ]; then
     . ~/utm/Diploma/src/.aliases.sh

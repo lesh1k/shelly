@@ -1,3 +1,5 @@
+SHELLY="~/.shelly" #set root directory for shelly
+
 function shelly(){
     local query=${@,,}
     local length=$(($#-1))
