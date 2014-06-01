@@ -1,6 +1,6 @@
 set -e
 
-if [ ! -n "$SHELLY" ]; then
+if [ -z "$SHELLY" ]; then
   SHELLY=~/.shelly
 fi
 
