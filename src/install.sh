@@ -18,7 +18,7 @@ hash git >/dev/null 2>&1 && /usr/bin/env git clone https://github.com/lexxxas/sh
 echo -e "\033[0;34mSetting up...\033[0m"
 echo -e "\033[0;34mPreparing aliases.\033[0m"
 if [ -f ~/.bashrc ]; then
-    echo "$(cat $SHELLY/bashrc-addition.sh)" >> ~/.bashrc
+    echo "$(cat $SHELLY/src/bashrc-addition.sh)" >> ~/.bashrc
 else 
     echo "Could not find ~/.bashrc"
     exit
@@ -26,12 +26,12 @@ fi
 
 echo -e "\033[0;34mPreparing auto-completion.\033[0m"
 if [ -d /etc/bash_completion.d/ ]; then
-    sudo cp -r $SHELLY/auto-complete/. /etc/bash_completion.d/
+    sudo cp -r $SHELLY/src/auto-complete/. /etc/bash_completion.d/
 
     echo "Loading newly added auto-completion files..."
     #Load/source new completion files
     FILES=auto-complete/*
-    FILES=$(echo "$SHELLY/$FILES")
+    FILES=$(echo "$SHELLY/src/$FILES")
     for f in $FILES
     do
         . /etc/bash_completion.d/${f##*/}
