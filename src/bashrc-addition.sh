@@ -1,15 +1,15 @@
 
 
 #####SIUNL/Shelly/human.sh############
-if [ -f ~/utm/Diploma/src/.aliases.sh ]; then
-    . ~/utm/Diploma/src/.aliases.sh
+if [ -f $SHELLY/src/.aliases.sh ]; then
+    . $SHELLY/src/.aliases.sh
 fi
 
-if [ -f ~/utm/Diploma/src/.admin.sh ]; then
-    . ~/utm/Diploma/src/.admin.sh
+if [ -f $SHELLY/src/.admin.sh ]; then
+    . $SHELLY/src/.admin.sh
 fi
 
-if [ -f ~/utm/Diploma/src/.commands.sh ]; then
-    . ~/utm/Diploma/src/.commands.sh
+if [ -f $SHELLY/src/.commands.sh ]; then
+    . $SHELLY/src/.commands.sh
 fi
 ###############################
