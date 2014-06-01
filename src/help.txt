@@ -15,6 +15,7 @@ Shelly can be asked using:
 
 Shelly can answer the following:
     
+    
     - INFO
           1. do I have {program_name}
              ** Tells if {program_name} is installed
@@ -50,6 +51,7 @@ Shelly can answer the following:
           8. open
              ** Suggestions about opening a file
     
+    
     - SYSTEM
            1. hows my disk space
               disk space
@@ -81,10 +83,13 @@ Shelly can answer the following:
               update applications
               ** Update installed applications
     
+    
     - HELP
-           1. shelly help
-              shelly what do you know
+           1. help
+              what do you know
+              manual
               ** Show help. i.e. Display this file.
+    
     
     - SEARCH FUNCTIONS
            1. search {string}
@@ -158,12 +163,22 @@ Shelly can answer the following:
           16. search any {string} in {path}
               ** Ouput FILENAME:NR_OF_MATCHES, if there are matches for {string} in
               {path} INCLUDING subfolders. CASE-INsensitive
-    
+
+          17. find {filename}
+              ** Ouput FILENAME(s), if there are matches for {filename} in
+              current folder or its subfolders.
+
+          18. find {filename} in {path}
+              ** Ouput FILENAME(s), if there are matches for {filename} in {path},
+              including subfolders.
+
+
     - OTHER
            1.levenshteinDistance "string1" "string2"  (!!! this one works without "shelly" prefix)
             ** Computes Levenshtein's distance. 
            BUGs: very slow (recursive implementation); There are test cases that are not handled correctly
 
+    
     - EMOTIONAL/FUN
            1. whats the meaning of life
               why do we live

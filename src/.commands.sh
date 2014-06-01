@@ -28,7 +28,8 @@ function shelly(){
         return
     fi
 
-    if [ "$query" = "update apps" ] || [ "$query" = "update applications" ]; then
+    if [ "$query" = "update apps" ] \
+        || [ "$query" = "update applications" ]; then
         echo -e "Using: sudo apt-get -q -q update; sudo apt-get -y -q -q upgrade"
         echo "Refreshing the list of repos..."
         sudo apt-get -q -q update
@@ -38,7 +39,10 @@ function shelly(){
         return
     fi
 
-    if [ "$query" = "update system" ] || [ "$query" = "update os" ] || [ "$query" = "update distro" ] || [ "$query" = "update distribution" ]; then
+    if [ "$query" = "update system" ] \
+        || [ "$query" = "update os" ] \
+        || [ "$query" = "update distro" ] \
+        || [ "$query" = "update distribution" ]; then
         echo -e "Using: sudo apt-get -y -q -q dist-upgrade"
         echo "Updating distro..."
         sudo apt-get -y -q -q dist-upgrade
@@ -46,7 +50,11 @@ function shelly(){
         return
     fi
 
-    if [ "$query" = "update os and apps" ] || [ "$query" = "update all" ] || [ "$query" = "update system and apps" ] || [ "$query" = "update apps and os" ] || [ "$query" = "do full update" ]; then
+    if [ "$query" = "update os and apps" ] \
+        || [ "$query" = "update all" ] \
+        || [ "$query" = "update system and apps" ] \
+        || [ "$query" = "update apps and os" ] \
+        || [ "$query" = "do full update" ]; then
         echo -e "Using: sudo apt-get -q -q update; sudo apt-get -y -q -q upgrade; sudo apt-get -y -q -q dist-upgrade"
         echo "Refreshing the list of repos..."
         sudo apt-get -q -q update
@@ -58,14 +66,20 @@ function shelly(){
         return
     fi
 
-    if [ "$query" = "whats my username" ] || [ "$query" = "who am i" ] || [ "$query" = "whoami" ] || [ "$query" = "username" ] || [ "$query" = "tellme my username" ] || [ "$query" = "tell me my username" ]; then
+    if [ "$query" = "whats my username" ] \
+        || [ "$query" = "who am i" ] \
+        || [ "$query" = "whoami" ] \
+        || [ "$query" = "username" ] \
+        || [ "$query" = "tellme my username" ] \
+        || [ "$query" = "tell me my username" ]; then
         # echo "Using: getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1"
         echo "Using: whoami"
         echo "You are: $username"
         return
     fi
 
-    if [ "$all_but_last" = "what" ] || [ "$all_but_last" = "what version is" ]; then
+    if [ "$all_but_last" = "what" ] \
+        || [ "$all_but_last" = "what version is" ]; then
         local app_location=$(command -v "${@: -1}")
         if [ -n "$app_location" ]; then
             echo "Using: command -v '${@: -1}'"
@@ -125,6 +139,7 @@ function shelly(){
 
     if  [ "$query" = "what do you know" ] \
      || [ "$query" = "help" ] \
+     || [ "$query" = "manual" ] \
      || [ "$query" = "help me" ]; then
         if [ -f "$shelly_root_path/src/help.txt" ]; then
             echo -e "$(cat $shelly_root_path/src/help.txt)""\n\nPress 'q' to exit..." | less -R
@@ -135,7 +150,7 @@ function shelly(){
     fi
 
     ###Search/find functions
-    if [ "$1" = "search" ] && [ $# > 2 ]; then
+    if [ "$1" = "search" ] && (( $# > 1 )); then
         
         local max_to_show=$(($LINES-4)) #max results to show without paging
         local path=$(pwd)
@@ -223,7 +238,7 @@ function shelly(){
             *)
                 echo 'Sorry, I did not understand this one. Teach me, Master!' 
                 return
-            ;;
+                ;;
         esac
 
         # echo -e "Using: ls -R | wc -l\ngrep -""$ep""Rc ""$needle"" * | grep -v :0\ngrep -""$ep""Rc ""$needle"" * | grep -v :0 | wc -l\ngrep -""$ep""oR ""$needle"" * | wc -l"
@@ -241,6 +256,42 @@ function shelly(){
             fi
         else
             echo -e "$total_occurrences matches found."
+        fi
+
+        return
+    fi
+
+    if [ "$1" = "find" ] && (( $# > 1 )); then
+        local max_to_show=$(($LINES-4)) #max results to show without paging
+        local path=$(pwd)
+        local name="$2"
+
+        case $# in
+            2)
+                #this is the base case
+                ;;
+            4)
+                if [ -d "${@: -1}" ]; then
+                    local path="${@: -1}"
+                else
+                    echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                    return
+                fi
+                ;;
+            *)
+                echo 'Sorry, I did not understand this one. Teach me, Master!' 
+                return
+                ;;
+        esac
+
+        echo "Searching..."
+        local result=$(find $path -name "*""$name""*")
+        local results_count=$(echo "$result" | wc -l)
+        echo "$results_count match(es) found"
+        if (($results_count > $max_to_show)); then
+            echo -e "$results_count match(es) found:\nUse UP/DOWN/SPACE/ENTER/HOME/END/PgUP/PgDOWN to navigate.\nPress 'q' to exit results view.\n\n""$result" | less -R
+        else
+            echo "$result"
         fi
 
         return
@@ -274,8 +325,8 @@ function shelly(){
         return
     fi
 
-    if [ "$1" = "open" ] && [ $# > 1 ]; then
-        echo "I am not sure about opening the file myself. However, you can try"
+    if [ "$1" = "open" ] && (( $# > 1 )); then
+        echo "I am not sure about opening anything myself. However, you can try"
         echo "using vi or nano (e.g. nano FILE or vi FILE) for text files."
         return
     fi
