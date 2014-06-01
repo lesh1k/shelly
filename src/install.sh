@@ -5,18 +5,18 @@ if [ -z "$SHELLY" ]; then
 fi
 
 if [ -d "$SHELLY" ]; then
-  echo -e "\033[0;33mShelly is already installed.\033[0m You'll need to remove $SHELLY if you want to install"
+  echo "\033[0;33mShelly is already installed.\033[0m You'll need to remove $SHELLY if you want to install"
   exit
 fi
 
-echo -e "\033[0;34mCloning Shelly...\033[0m"
+echo "\033[0;34mCloning Shelly...\033[0m"
 hash git >/dev/null 2>&1 && /usr/bin/env git clone https://github.com/lexxxas/shelly.git $SHELLY || {
   echo "git not installed"
   exit
 }
 
-echo -e "\033[0;34mSetting up...\033[0m"
-echo -e "\033[0;34mPreparing aliases.\033[0m"
+echo "\033[0;34mSetting up...\033[0m"
+echo "\033[0;34mPreparing aliases.\033[0m"
 if [ -f ~/.bashrc ]; then
     echo "$(cat $SHELLY/src/bashrc-addition.sh)" >> ~/.bashrc
 else 
@@ -24,7 +24,7 @@ else
     exit
 fi
 
-echo -e "\033[0;34mPreparing auto-completion.\033[0m"
+echo "\033[0;34mPreparing auto-completion.\033[0m"
 if [ -d /etc/bash_completion.d/ ]; then
     sudo cp -r $SHELLY/src/auto-complete/. /etc/bash_completion.d/
 
@@ -41,9 +41,9 @@ else
     echo "Auto-complete setup failed!"
 fi
 
-echo -e "\033[0;34mAliases first load.\033[0m"
+echo "\033[0;34mAliases first load.\033[0m"
 if [ -z "$SHELLY" ]; then
   SHELLY=~/.shelly
 fi
 . ~/.bashrc
-echo -e "\033[0;34mDone!\033[0m"
+echo "\033[0;34mDone!\033[0m"

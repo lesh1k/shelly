@@ -1,10 +1,6 @@
 
 
 #####SIUNL/Shelly/human.sh############
-if [ -z "$SHELLY" ]; then
-  SHELLY=~/.shelly
-fi
-
 if [ -f $SHELLY/src/.aliases.sh ]; then
     . $SHELLY/src/.aliases.sh
 fi
