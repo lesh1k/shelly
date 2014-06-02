@@ -6,7 +6,7 @@ function shelly(){
     local all_but_last=${@:1:$length}
     # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
     local username=$(whoami)
-    local shelly_root_path=$SHELLY
+    local shelly_root_path=~/.shelly
 
     if [ "${all_but_last,,}" == "do i have" ]; then
         echo -e 'Using: command -v ${@: -1} 2>/dev/null 1>/dev/null && { echo >&1 "Yes. You can launch it using '"$(command -v ${@: -1})"' OR you can try '"${@: -1}"'"; } || { echo >&2 "It seems that - ${@: -1} - is not installed."; }'
