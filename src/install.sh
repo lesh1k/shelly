@@ -4,8 +4,6 @@ if [ -z "$SHELLY" ]; then
   SHELLY=~/.shelly
 fi
 
-WELCOME_MSG=$(echo "Shelly installed successfully! To see available functions use: Shelly help. \n Go on try: shelly, Hi")
-
 if [ -d "$SHELLY" ]; then
   echo "\033[0;33mShelly is already installed.\033[0m You'll need to remove $SHELLY if you want to install"
   exit
