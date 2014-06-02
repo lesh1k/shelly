@@ -24,3 +24,10 @@ Restrictions: currently works on Ubuntu 12.04 or later. Should work on its deriv
 
 
 Installation: curl -L https://raw.githubusercontent.com/lexxxas/shelly/master/src/install.sh | sh && . ~/.bashrc && shelly welcome message
+
+Uninstall: For now there is no automated uninstall procedure. 
+Steps to uninstall:
+1) Remove all Shelly data from ~/.bashrc (it will be at the EOF)
+if unsure what to delete take a look at ~/.shelly/src/bashrc-addition.sh
+2) sudo rm -r ~/.shelly
+3) . ~/.bashrc
