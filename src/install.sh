@@ -4,6 +4,8 @@ if [ -z "$SHELLY" ]; then
   SHELLY=~/.shelly
 fi
 
+$WELCOME_MSG="Shelly installed successfully! To see available functions use 'Shelly help'. \n Go on try 'shelly, Hi"
+
 if [ -d "$SHELLY" ]; then
   echo "\033[0;33mShelly is already installed.\033[0m You'll need to remove $SHELLY if you want to install"
   exit
@@ -40,7 +42,3 @@ fi
 #     echo "Could not find /etc/bash_completion.d/"
 #     echo "Auto-complete setup failed!"
 # fi
-
-echo "\033[0;34mAliases first load.\033[0m"
-source ~/.bashrc
-echo "\033[0;34mDone!\033[0m"
