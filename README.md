@@ -23,4 +23,4 @@ Restrictions: currently works on Ubuntu 12.04 or later. Should work on its deriv
             use distro-specific stuff, e.g. install/update)
 
 
-Installation: TBD
+Installation: curl -L https://raw.githubusercontent.com/lexxxas/shelly/master/src/install.sh | sh && . ~/.bashrc && shelly welcome message

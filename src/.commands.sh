@@ -6,7 +6,6 @@ function shelly(){
     local all_but_last=${@:1:$length}
     # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
     local username=$(whoami)
-    # local shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
     local shelly_root_path=$SHELLY
 
     if [ "${all_but_last,,}" == "do i have" ]; then
@@ -357,6 +356,12 @@ function shelly(){
     if [ "$query" = "will you marry me" ] ; then
         shelly do you love me
         echo -e "I would, for sure. However I fear that our hardware is not compatible... yet"
+        return
+    fi
+
+    if [ "$query" = "welcome message" ] ; then
+        echo -e "Greetings, $username!"
+        echo -e "I am Shelly. You can find all instructions using 'Shelly help'"
         return
     fi
 
