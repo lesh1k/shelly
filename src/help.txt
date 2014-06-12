@@ -179,7 +179,7 @@ Shelly can answer the following:
            BUGs: very slow (recursive implementation); There are test cases that are not handled correctly
 
     
-    - EMOTIONAL/FUN
+    - EMOTIONAL/FUN/CHAT
            1. whats the meaning of life
               why do we live
            2. do you love me

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 SHELLY="~/.shelly" #set root directory for shelly
 
 function shelly(){
@@ -6,6 +7,7 @@ function shelly(){
     local all_but_last=${@:1:$length}
     # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
     local username=$(whoami)
+    
     local shelly_root_path=~/.shelly
 
     if [ "${all_but_last,,}" == "do i have" ]; then
@@ -85,10 +87,10 @@ function shelly(){
         local app_location=$(command -v "${@: -1}")
         if [ -n "$app_location" ]; then
             echo "Using: command -v '${@: -1}'"
-            echo "dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //'"
-            echo "dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //'"
-            local version=$(dpkg -p python | awk '/Version/ {print}' | sed 's/Version: //')
-            local architecture=$(dpkg -p python | awk '/Architecture/ {print}' | sed 's/Architecture: //')
+            echo "dpkg -p ${@: -1} | awk '/Version/ {print}' | sed 's/Version: //'"
+            echo "dpkg -p ${@: -1} | awk '/Architecture/ {print}' | sed 's/Architecture: //'"
+            local version=$(dpkg -p ${@: -1} | awk '/Version/ {print}' | sed 's/Version: //')
+            local architecture=$(dpkg -p ${@: -1} | awk '/Architecture/ {print}' | sed 's/Architecture: //')
             echo "Your version of ${@: -1} is: $version. Architecture: $architecture."
         else
             echo -e "It seems that ${@: -1} is not installed.\nI might install it if I find the right repository. Just ask "
