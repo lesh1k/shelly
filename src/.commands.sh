@@ -7,7 +7,7 @@ function shelly(){
     local all_but_last=${@:1:$length}
     # username=$(getent passwd $LOGNAME | cut -d: -f5 | cut -d, -f1)
     local username=$(whoami)
-    
+    # local shelly_root_path="/mnt/leData/Docs/UTM/Diploma"
     local shelly_root_path=~/.shelly
 
     if [ "${all_but_last,,}" == "do i have" ]; then
